@@ -9,9 +9,9 @@
   <br />
   <br />
   
-  <a href="https://github.com/jcruz-2018059/Laboratorio-1---Almacenador/issues/new">Reportar un bug</a>
+  <a href="https://github.com/jcruz-2018059/Sistema-Bancario/issues/new">Reportar un bug</a>
   ·
-  <a href="https://github.com/jcruz-2018059/Easy-Charity/pulls">Aportar al proyecto</a>
+  <a href="https://github.com/jcruz-2018059/Sistema-Bancario/pulls">Aportar al proyecto</a>
 </div>
 
 <div align="center">
