@@ -12,6 +12,11 @@ const app = express();
 const port = process.env.PORT || 3200;
 
 // Rutas
+//Rutas de user
+//Rutas de deposit
+//Rutas de favorites
+//Rutas de movement
+//Rutas de service
 
 //Configurar el servidor de express
 app.use(express.urlencoded({extended:false}));
@@ -21,6 +26,11 @@ app.use(helmet());
 app.use(morgan('dev'));
 
 //Rutas de cada colección 
+//Rutas de colección user
+//Rutas de colecciónv deposit
+//Rutas de colección favorites
+//Rutas de colección movement
+//Rutas de colección service
 
 //Función para levantar el puerto
 exports.initServer = ()=>{
