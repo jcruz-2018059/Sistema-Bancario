@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const mongoose = require('mongoose');
 
@@ -28,7 +28,9 @@ const userScheme = mongoose.Schema({
     DPI: {
         type: Number,
         required: true,
-        unique: true
+        unique: true,
+        minLength: 13,
+        maxLength: 13
     },
     address: {
         type: String,
@@ -36,17 +38,12 @@ const userScheme = mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true
+        required: true,
+        minLength: 8
     },
     email: {
         type: String,
-        required: true,
-        validate: {
-            validator: function(v) {
-                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v); 
-            },
-            message: 'Porfavor ingrese un correo válido.'
-        }
+        required: true
     },
     password: {
         type: String,

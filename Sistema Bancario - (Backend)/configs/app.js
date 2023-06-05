@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const express = require('express');
 //Logs de las solicitudes que reciba el servidor
@@ -36,4 +36,4 @@ app.use('/user', userRoutes);
 exports.initServer = ()=>{
     app.listen(port);
     console.log(`Server http running in port ${port}`);
-}
+};
