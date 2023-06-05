@@ -1,5 +1,5 @@
 'use strict'
-
+const User = require('../src/user/user.model');
 const bcrypt = require('bcrypt');
 
 exports.validateData = (data)=>{
@@ -30,3 +30,15 @@ exports.checkPassword = async(password, hash)=>{
         return false;
     }
 }
+
+exports.generateAccountNumber = async()=>{
+    let accountNumber = '';
+    for (let i = 0; i < 10; i++) {
+      accountNumber += Math.floor(Math.random() * 10);
+    }
+    let existAccountNumber = await User.findOne({accountNumber: accountNumber});
+        if(existAccountNumber){
+            return this.generateAccountNumber()
+        }
+    return accountNumber;
+  }

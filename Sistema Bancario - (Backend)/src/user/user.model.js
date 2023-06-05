@@ -22,7 +22,8 @@ const userScheme = mongoose.Schema({
     accountNumber: {
         type: Number,
         required: true,
-        unique: true
+        unique: true,
+        maxLength: 10
     },
     DPI: {
         type: Number,
@@ -44,7 +45,7 @@ const userScheme = mongoose.Schema({
             validator: function(v) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v); 
             },
-            message: "Porfavor ingrese un correo válido."
+            message: 'Porfavor ingrese un correo válido.'
         }
     },
     password: {
