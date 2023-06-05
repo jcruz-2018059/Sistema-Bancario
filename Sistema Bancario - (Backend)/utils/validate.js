@@ -46,13 +46,16 @@ exports.generateAccountNumber = async()=>{
 
 exports.save = [
     body('email', 'Correo electrónico inválido')
+        .if(body('email').exists()).notEmpty()
         .trim()
         .isEmail()
         .normalizeEmail(),
     body('phone', 'Número de teléfono no valido, ingresa un número de 8 dígitos')
+        .if(body('phone').exists()).notEmpty()
         .trim()
         .isLength({min: 8}),
     body('DPI', 'DPI no valido, ingresa un DPI de 13 dígitos')
+        .if(body('DPI').exists()).notEmpty()
         .trim()
         .isLength({min: 13, max: 13})
 ];

@@ -119,3 +119,53 @@ exports.get = async(req, res)=>{
         return res.status(500).send({message: 'Error getting users.'});
     }
 };
+
+exports.update = async(req, res)=>{
+    try{
+        let data = req.body;
+        let userId = req.params.id;
+        let existUser = await User.findOne({_id: userId});
+        if(!existUser){
+            return res.status(404).send({message: 'User not found.'});
+        }
+        if(existUser.username === 'adminb'){
+            return res.status(400).send({message: 'Not authorized.'});
+        }
+        if(Object.entries(data).length === 0 || data.role || data.password || data.accountNumber || data.balance){
+            return res.status(400).send({message: 'Alguna información no puede ser actualizada.'});
+        }
+        if(data.username){
+            let existUsername = await User.findOne({username: data.username});
+            if(existUsername){
+                if(existUsername._id != userId){
+                    return res.status(400).send({message: 'El username ya está en uso.'});
+                }
+            }
+        }
+        if(data.monthlyIncome){
+            if(data.monthlyIncome < 100){
+                return res.status(400).send({message: 'Los ingresos mensuales deben ser mayores a Q100.'});
+            }
+        }
+        if(data.DPI){
+            let existDPI = await User.findOne({DPI: data.DPI});
+            if(existDPI){
+                if(existDPI._id != userId){
+                    return res.status(400).send({message: 'El DPI ya está registrado.'});
+                } 
+            }
+        }
+        let updatedUser = await User.findByIdAndUpdate(
+            {_id: userId},
+            data,
+            {new: true}
+        ).select('name surname username accountNumber DPI address phone email workName monthlyIncome balance');
+        if(!updatedUser){
+            return res.status(404).send({message: 'User not found and not updated.'});
+        }
+        return res.send({message: '¡Usuario actualizado!', updatedUser});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error updating user.'});
+    }
+};
