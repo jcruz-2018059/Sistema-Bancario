@@ -12,5 +12,6 @@ api.post('/login', userController.login);
 
 //Funciones de ADMIN
 api.post('/add', [ensureAuth, isAdmin, save, saveValidation], userController.add);
+api.get('/get', [ensureAuth, isAdmin], userController.get);
 
 module.exports = api;

@@ -109,3 +109,13 @@ exports.add = async(req, res)=>{
         return res.status(500).send({message: 'Error creating user.'});
     }
 };
+
+exports.get = async(req, res)=>{
+    try{
+        let users = await User.find().select('name surname username accountNumber DPI address phone email workName balance');
+        return res.send({message: 'Users found: ', users});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting users.'});
+    }
+};
