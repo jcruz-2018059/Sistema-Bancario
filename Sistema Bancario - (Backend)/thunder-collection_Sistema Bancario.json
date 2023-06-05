@@ -1,0 +1,254 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Sistema Bancario",
+    "dateExported": "2023-06-05T02:54:01.831Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "ef10bf0f-079e-4b6d-bccd-761697392111",
+            "name": "User",
+            "containerId": "",
+            "created": "2023-06-05T00:34:29.460Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "name": "Admin",
+            "containerId": "ef10bf0f-079e-4b6d-bccd-761697392111",
+            "created": "2023-06-05T01:09:11.831Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "3c43eda8-b6cb-4eb3-b81d-5ded31a64aad",
+            "name": "Deposit",
+            "containerId": "",
+            "created": "2023-06-05T02:53:15.865Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "c6da04f0-58bc-44d2-9544-83e6217102f0",
+            "name": "Favorites",
+            "containerId": "",
+            "created": "2023-06-05T02:53:22.934Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "3894877d-2cf4-4cfa-8abf-36c466c711c9",
+            "name": "Movement",
+            "containerId": "",
+            "created": "2023-06-05T02:53:37.448Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "1c60fa90-8ca9-405f-bd38-b57be4430d93",
+            "name": "Service",
+            "containerId": "",
+            "created": "2023-06-05T02:53:51.940Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "5e8eb547-2310-4412-b383-8459af53ced9",
+            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
+            "containerId": "ef10bf0f-079e-4b6d-bccd-761697392111",
+            "name": "Login",
+            "url": "user/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-05T01:00:11.462Z",
+            "modified": "2023-06-05T01:00:34.919Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "adminb"
+                    },
+                    {
+                        "name": "password",
+                        "value": "ADMINB"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "8310bb88-a32a-47a7-ba9c-c636c2af2c3c",
+            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
+            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "name": "Add User",
+            "url": "user/add",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-06-05T01:09:17.790Z",
+            "modified": "2023-06-05T02:52:08.857Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDdkNGI5ZDY5ZGU1NWIxNDRmNTE1ZmQiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg1OTMzMDE5LCJleHAiOjE2ODU5NDAyMTl9.c8RI914Hs72Pqu_Q-QRD0uMuCNYgQ-m2fKBO81kGe2M\""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Abimael"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "López"
+                    },
+                    {
+                        "name": "username",
+                        "value": "alopez"
+                    },
+                    {
+                        "name": "DPI",
+                        "value": "874521023145"
+                    },
+                    {
+                        "name": "address",
+                        "value": "Zona 3 Mixco"
+                    },
+                    {
+                        "name": "email",
+                        "value": "alopezhola.xd"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "5487213"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123"
+                    },
+                    {
+                        "name": "workName",
+                        "value": "USAC"
+                    },
+                    {
+                        "name": "monthlyIncome",
+                        "value": "100"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "78e25dbe-0762-46da-a22a-0bc510fe3ebb",
+            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
+            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "name": "Get Users",
+            "url": "user/get",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-06-05T01:50:05.832Z",
+            "modified": "2023-06-05T01:50:18.182Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDdkMzJkODg2MGE2YjdjYTk5YTliYmIiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg1OTI2ODM0LCJleHAiOjE2ODU5MzQwMzR9.IqEvuupGNEMBTXcFBNu9LgcUdcerv9mHoJndxq7QCn0\""
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "539bbb03-07ef-470f-a366-1a9bd2a87039",
+            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
+            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "name": "Update User",
+            "url": "user/update/647d4be200139e7573690f3f",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-06-05T02:28:31.727Z",
+            "modified": "2023-06-05T02:44:43.641Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDdkNGI5ZDY5ZGU1NWIxNDRmNTE1ZmQiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg1OTMzMDE5LCJleHAiOjE2ODU5NDAyMTl9.c8RI914Hs72Pqu_Q-QRD0uMuCNYgQ-m2fKBO81kGe2M\""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Fares"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Cabrera"
+                    },
+                    {
+                        "name": "username",
+                        "value": "fcabrera"
+                    },
+                    {
+                        "name": "DPI",
+                        "value": "8745123547814"
+                    },
+                    {
+                        "name": "address",
+                        "value": "Zona 3 Villa Nueva"
+                    },
+                    {
+                        "name": "email",
+                        "value": "fcabrera@hola.xd"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "87421561"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "workName",
+                        "value": "Honda"
+                    },
+                    {
+                        "name": "monthlyIncome",
+                        "value": "100"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "afdb72c4-ab2e-4438-8d5d-79d324a0b5f6",
+            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
+            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "name": "Delete User",
+            "url": "user/delete/647d4b9d69de55b144f515fd",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-06-05T02:48:20.518Z",
+            "modified": "2023-06-05T02:48:56.293Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDdkNGI5ZDY5ZGU1NWIxNDRmNTE1ZmQiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg1OTMzMDE5LCJleHAiOjE2ODU5NDAyMTl9.c8RI914Hs72Pqu_Q-QRD0uMuCNYgQ-m2fKBO81kGe2M\""
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:3200/"
+        }
+    }
+}
