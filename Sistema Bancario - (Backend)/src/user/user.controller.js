@@ -131,7 +131,7 @@ exports.update = async(req, res)=>{
         if(existUser.username === 'adminb' || existUser.role === 'ADMIN'){
             return res.status(400).send({message: 'Not authorized.'});
         }
-        if(Object.entries(data).length === 0 || data.role || data.password || data.accountNumber || data.balance){
+        if(Object.entries(data).length === 0 || data.role || data.password || data.accountNumber || data.balance || data.DPI){
             return res.status(400).send({message: 'Alguna información no puede ser actualizada.'});
         }
         if(data.username){
@@ -145,14 +145,6 @@ exports.update = async(req, res)=>{
         if(data.monthlyIncome){
             if(data.monthlyIncome < 100){
                 return res.status(400).send({message: 'Los ingresos mensuales deben ser mayores a Q100.'});
-            }
-        }
-        if(data.DPI){
-            let existDPI = await User.findOne({DPI: data.DPI});
-            if(existDPI){
-                if(existDPI._id != userId){
-                    return res.status(400).send({message: 'El DPI ya está registrado.'});
-                } 
             }
         }
         let updatedUser = await User.findByIdAndUpdate(
