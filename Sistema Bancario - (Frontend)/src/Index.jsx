@@ -38,6 +38,9 @@ export const Index = () => {
                 {
                     path: '/register',
                     element: <RegisterPage></RegisterPage>
+                },
+                {
+                    path: '/start',
                 }     
             ]
         }     
