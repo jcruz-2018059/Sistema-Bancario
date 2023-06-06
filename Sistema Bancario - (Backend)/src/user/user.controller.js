@@ -80,7 +80,8 @@ exports.add = async(req, res)=>{
             phone: data.phone,
             password: data.password,
             workName: data.workName,
-            monthlyIncome: data.monthlyIncome
+            monthlyIncome: data.monthlyIncome,
+            role: data.role
         };
         let validate = validateData(params);
         if(validate){
@@ -89,7 +90,6 @@ exports.add = async(req, res)=>{
         if(data.monthlyIncome < 100){
             return res.status(400).send({message: 'Los ingresos mensuales deben ser mayores a Q100.'});
         }
-        data.role = 'CLIENT';
         let existUsername = await User.findOne({username: data.username});
         if(existUsername){
             return res.status(400).send({message: 'El username ya está en uso.'});
@@ -128,7 +128,7 @@ exports.update = async(req, res)=>{
         if(!existUser){
             return res.status(404).send({message: 'User not found.'});
         }
-        if(existUser.username === 'adminb'){
+        if(existUser.username === 'adminb' || existUser.role === 'ADMIN'){
             return res.status(400).send({message: 'Not authorized.'});
         }
         if(Object.entries(data).length === 0 || data.role || data.password || data.accountNumber || data.balance){
@@ -177,7 +177,7 @@ exports.delete = async(req, res)=>{
         if(!existUser){
             return res.status(404).send({message: 'User not found.'});
         }
-        if(existUser.username === 'adminb'){
+        if(existUser.username === 'adminb' || existUser.role === 'ADMIN'){
             return res.status(400).send({message: 'Not authorized.'});
         }
         let deletedUser = await User.findOneAndDelete({_id: userId});
