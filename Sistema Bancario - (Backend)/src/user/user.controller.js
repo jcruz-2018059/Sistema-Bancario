@@ -182,3 +182,34 @@ exports.delete = async(req, res)=>{
         return res.status(500).send({message: 'Error deleting user.'});
     }
 };
+
+// CLIENT
+exports.updateClient = async(req, res)=>{
+    try{
+        let data = req.body;
+        let user = req.user.sub;
+        if(Object.entries(data).length === 0 || data.name || data.surname || data.address || data.workName || data.monthlyIncome || data.role || data.password || data.accountNumber || data.balance || data.DPI){
+            return res.status(400).send({message: 'Alguna información no puede ser actualizada.'});
+        }
+        if(data.username){
+            let existUsername = await User.findOne({username: data.username});
+            if(existUsername){
+                if(existUsername._id != user){
+                    return res.status(400).send({message: 'El username ya está en uso.'});
+                }
+            }
+        }
+        let updatedUser = await User.findByIdAndUpdate(
+            {_id: user},
+            data,
+            {new: true}
+        ).select('name surname username accountNumber DPI address phone email workName monthlyIncome balance');
+        if(!updatedUser){
+            return res.status(404).send({message: 'User not found and not updated.'});
+        }
+        return res.send({message: '¡Usuario actualizado!', updatedUser});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error updating user.'});
+    }
+};
