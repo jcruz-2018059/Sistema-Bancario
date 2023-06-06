@@ -80,7 +80,8 @@ exports.add = async(req, res)=>{
             phone: data.phone,
             password: data.password,
             workName: data.workName,
-            monthlyIncome: data.monthlyIncome
+            monthlyIncome: data.monthlyIncome,
+            role: data.role
         };
         let validate = validateData(params);
         if(validate){
@@ -89,7 +90,6 @@ exports.add = async(req, res)=>{
         if(data.monthlyIncome < 100){
             return res.status(400).send({message: 'Los ingresos mensuales deben ser mayores a Q100.'});
         }
-        data.role = 'CLIENT';
         let existUsername = await User.findOne({username: data.username});
         if(existUsername){
             return res.status(400).send({message: 'El username ya está en uso.'});
@@ -128,10 +128,10 @@ exports.update = async(req, res)=>{
         if(!existUser){
             return res.status(404).send({message: 'User not found.'});
         }
-        if(existUser.username === 'adminb'){
+        if(existUser.username === 'adminb' || existUser.role === 'ADMIN'){
             return res.status(400).send({message: 'Not authorized.'});
         }
-        if(Object.entries(data).length === 0 || data.role || data.password || data.accountNumber || data.balance){
+        if(Object.entries(data).length === 0 || data.role || data.password || data.accountNumber || data.balance || data.DPI){
             return res.status(400).send({message: 'Alguna información no puede ser actualizada.'});
         }
         if(data.username){
@@ -145,14 +145,6 @@ exports.update = async(req, res)=>{
         if(data.monthlyIncome){
             if(data.monthlyIncome < 100){
                 return res.status(400).send({message: 'Los ingresos mensuales deben ser mayores a Q100.'});
-            }
-        }
-        if(data.DPI){
-            let existDPI = await User.findOne({DPI: data.DPI});
-            if(existDPI){
-                if(existDPI._id != userId){
-                    return res.status(400).send({message: 'El DPI ya está registrado.'});
-                } 
             }
         }
         let updatedUser = await User.findByIdAndUpdate(
@@ -177,7 +169,7 @@ exports.delete = async(req, res)=>{
         if(!existUser){
             return res.status(404).send({message: 'User not found.'});
         }
-        if(existUser.username === 'adminb'){
+        if(existUser.username === 'adminb' || existUser.role === 'ADMIN'){
             return res.status(400).send({message: 'Not authorized.'});
         }
         let deletedUser = await User.findOneAndDelete({_id: userId});
@@ -188,5 +180,36 @@ exports.delete = async(req, res)=>{
     }catch(err){
         console.error(err);
         return res.status(500).send({message: 'Error deleting user.'});
+    }
+};
+
+// CLIENT
+exports.updateClient = async(req, res)=>{
+    try{
+        let data = req.body;
+        let user = req.user.sub;
+        if(Object.entries(data).length === 0 || data.name || data.surname || data.address || data.workName || data.monthlyIncome || data.role || data.password || data.accountNumber || data.balance || data.DPI){
+            return res.status(400).send({message: 'Alguna información no puede ser actualizada.'});
+        }
+        if(data.username){
+            let existUsername = await User.findOne({username: data.username});
+            if(existUsername){
+                if(existUsername._id != user){
+                    return res.status(400).send({message: 'El username ya está en uso.'});
+                }
+            }
+        }
+        let updatedUser = await User.findByIdAndUpdate(
+            {_id: user},
+            data,
+            {new: true}
+        ).select('name surname username accountNumber DPI address phone email workName monthlyIncome balance');
+        if(!updatedUser){
+            return res.status(404).send({message: 'User not found and not updated.'});
+        }
+        return res.send({message: '¡Usuario actualizado!', updatedUser});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error updating user.'});
     }
 };
