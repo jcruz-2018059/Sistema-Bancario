@@ -2,6 +2,6 @@ import React from 'react'
 
 export const ViewDepositsPage = () => {
   return (
-    <h1>Ver depositos</h1>
+    <h1 className='text-center' style={{paddingTop: '100px'}}>Ver depositos</h1>
   )
 }

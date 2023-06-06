@@ -3,7 +3,7 @@ import React from 'react'
 export const AccountPage = () => {
   return (
     <>  
-        <h1>Mi cuenta</h1>
+        <h1 className='text-center' style={{paddingTop: '100px'}}>Mi cuenta</h1>
     </>
   )
 }

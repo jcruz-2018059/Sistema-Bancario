@@ -1,11 +1,10 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-export const ProductsPage = () => {
+export const Menu = () => {
   return (
     <>
     <Outlet></Outlet>
-
     </>
   )
 }
