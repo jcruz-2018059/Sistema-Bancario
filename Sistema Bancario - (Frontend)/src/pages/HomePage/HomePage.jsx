@@ -23,7 +23,7 @@ export const HomePage = () => {
                 <p className="lead fw-normal mb-5" id="hero-text">
                 Más que un banco, somos una comunidad financiera que te respalda en cada paso
                 </p>
-                <div className="d-flex flex-column flex-lg-row align-items-center">
+                <div className="d-flex flex-column flex-lg-row align-items-center pb-5">
                   <Link
                     to='/login'
                     type="button"
