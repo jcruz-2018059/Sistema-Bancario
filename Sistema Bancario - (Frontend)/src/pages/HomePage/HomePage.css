@@ -1,0 +1,46 @@
+*{
+    text-decoration: none;
+}
+
+#hero-title{
+    font-family: 'Poppins', sans-serif;
+    font-size: 55px;
+    color: white;
+}
+
+#hero-text{
+    color: white;
+}
+
+#card-title{
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color: #B82727;
+}
+
+#card-title2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    padding-bottom: 18px;
+}
+
+#text-section1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 5rem;
+    color: #B82727;
+}
+
+#text-section2{
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    font-size: 19px;
+}
+
+#text-section3{
+    color: #313131;
+    font-size: 16px;
+}
+
+#text-Benficas{
+    font-family: 'Poppins', sans-serif;
+}
