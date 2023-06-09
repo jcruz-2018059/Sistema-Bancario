@@ -79,21 +79,21 @@ export const HomePage = () => {
 
             </div>
             <h3 className="fs-2">Ahorra </h3>
-            <p>Con la plataforma, puedes comparar buscar precios de diferentes hoteles en tiempo real y realizar reservas con solo unos clics.</p>
+            <p>El ahorro te permite lograr metas y sueños a corto, mediano y largo plazo, generando en ti una sensación de satisfacción y tranquilidad.</p>
           </div>
           <div className="feature col">
           <img className="img-fluid pb-3" src="\src\assets\Check2.png" width={"90px"}/>
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
             </div>
             <h3 className="fs-2">Facilidad de uso</h3>
-            <p>La aplicación es intuitiva y facil de usar, podras realizar tus reservaciones con rapidez y confianza. Reservar un hotel nunca fue tan fácil.</p>
+            <p>La aplicación es intuitiva y facil de usar, podras realizar tus transacciones y depositos con rapidez y confianza. Gestionar tu finanzas nunca fue tan fácil.</p>
           </div>
           <div className="feature col">
           <img className="img-fluid pb-3" src="\src\assets\Check3.png" width={"90px"}/>
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
             </div>
-            <h3 className="fs-2">Disfruta</h3>
-            <p>Vive las mejores experiencias y disfruta cada momento en el mejor lugar, busca tu hotel preferido y haz tu reservación ahora.</p>
+            <h3 className="fs-2">Seguridad</h3>
+            <p>Vive las mejores experiencias y disfruta cada momento en el mejor lugar seguro, protegemos tu información y tus transacciones.</p>
           </div>
         </div>
       </div>
