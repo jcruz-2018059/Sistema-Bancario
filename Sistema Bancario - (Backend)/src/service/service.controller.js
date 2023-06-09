@@ -15,6 +15,7 @@ exports.addService = async(req,res)=>{
         return res.send({message: 'Service created Successfully', service});
     }catch(err){
         console.error(err);
-        return res.status(500).send({message: 'Error create Service'});
+        return res.status(500).send({message: 'Error create Service', error: err.message});
     }
 };
+

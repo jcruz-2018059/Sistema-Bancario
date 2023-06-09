@@ -13,6 +13,7 @@ const port = process.env.PORT || 3200;
 
 // Rutas
 const userRoutes = require('../src/user/user.routes');
+const serviceRoutes = require('../src/service/service.routes');
 //Rutas de deposit
 //Rutas de favorites
 //Rutas de movement
@@ -31,6 +32,7 @@ app.use('/user', userRoutes);
 //Rutas de colección favorites
 //Rutas de colección movement
 //Rutas de colección service
+app.use('/service',serviceRoutes);
 
 //Función para levantar el puerto
 exports.initServer = ()=>{
