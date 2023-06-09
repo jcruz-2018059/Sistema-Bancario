@@ -46,3 +46,22 @@ exports.deleteService = async(req,res)=>{
         return res.status(500).send({message: 'Error deleted Service', error: err.message});
     }
 };
+
+exports.updateService = async(req,res)=>{
+    try{
+        let data = req.body;
+        let serviceID = req.params.id;
+
+        let updateService = await Service.findOneAndUpdate(
+            {_id: serviceID},
+            data,
+            {new: true}
+        );
+        if(!updateService) return res.status(404).send({message: 'Service not found, not updating'});
+
+        return res.send({message: 'Service updated successfully', updateService});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error updating Service', error: err.message});
+    }
+};
