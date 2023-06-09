@@ -1,70 +1,70 @@
 {
     "client": "Thunder Client",
     "collectionName": "Sistema Bancario",
-    "dateExported": "2023-06-06T23:47:17.997Z",
+    "dateExported": "2023-06-09T06:39:04.362Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "ef10bf0f-079e-4b6d-bccd-761697392111",
+            "_id": "369fbacc-381d-463c-a95a-69bf54a3ed6f",
             "name": "User",
             "containerId": "",
-            "created": "2023-06-05T00:34:29.460Z",
+            "created": "2023-06-09T03:23:51.131Z",
             "sortNum": 10000
         },
         {
-            "_id": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "_id": "80491c3a-25dc-44b3-a68c-b1e5d3c64712",
             "name": "Admin",
-            "containerId": "ef10bf0f-079e-4b6d-bccd-761697392111",
-            "created": "2023-06-05T01:09:11.831Z",
+            "containerId": "369fbacc-381d-463c-a95a-69bf54a3ed6f",
+            "created": "2023-06-09T03:23:51.132Z",
             "sortNum": 20000
         },
         {
-            "_id": "3c43eda8-b6cb-4eb3-b81d-5ded31a64aad",
+            "_id": "f80dade6-c1f0-4116-b3b4-01da6096bf0b",
             "name": "Deposit",
             "containerId": "",
-            "created": "2023-06-05T02:53:15.865Z",
+            "created": "2023-06-09T03:23:51.133Z",
             "sortNum": 30000
         },
         {
-            "_id": "c6da04f0-58bc-44d2-9544-83e6217102f0",
+            "_id": "28c3788f-4926-427e-a010-9db5bec23a05",
             "name": "Favorites",
             "containerId": "",
-            "created": "2023-06-05T02:53:22.934Z",
+            "created": "2023-06-09T03:23:51.134Z",
             "sortNum": 40000
         },
         {
-            "_id": "3894877d-2cf4-4cfa-8abf-36c466c711c9",
+            "_id": "d027bc44-3c9a-4bcf-b2fb-1d6c48d586a0",
             "name": "Movement",
             "containerId": "",
-            "created": "2023-06-05T02:53:37.448Z",
+            "created": "2023-06-09T03:23:51.136Z",
             "sortNum": 50000
         },
         {
-            "_id": "1c60fa90-8ca9-405f-bd38-b57be4430d93",
+            "_id": "63595b89-cbca-48fe-88e7-b1d96b1dd07c",
             "name": "Service",
             "containerId": "",
-            "created": "2023-06-05T02:53:51.940Z",
+            "created": "2023-06-09T03:23:51.137Z",
             "sortNum": 60000
         },
         {
-            "_id": "cdd31c62-c446-4e49-abdd-b4b2c2f7d78a",
+            "_id": "5cafd868-f4e0-460e-acc2-7805d0dde5a5",
             "name": "Client",
-            "containerId": "ef10bf0f-079e-4b6d-bccd-761697392111",
-            "created": "2023-06-06T23:43:47.297Z",
+            "containerId": "369fbacc-381d-463c-a95a-69bf54a3ed6f",
+            "created": "2023-06-09T03:23:51.138Z",
             "sortNum": 70000
         }
     ],
     "requests": [
         {
-            "_id": "2a2bc4c6-b905-43b5-87ce-3392203fa41f",
-            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
-            "containerId": "cdd31c62-c446-4e49-abdd-b4b2c2f7d78a",
+            "_id": "4d8fbc7b-cd49-4586-bd83-e12f657be9b1",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "5cafd868-f4e0-460e-acc2-7805d0dde5a5",
             "name": "Update Client",
             "url": "user/update",
             "method": "PUT",
             "sortNum": 10000,
-            "created": "2023-06-06T23:43:33.629Z",
-            "modified": "2023-06-06T23:45:44.951Z",
+            "created": "2023-06-09T03:23:51.132Z",
+            "modified": "2023-06-09T03:23:51.132Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -128,15 +128,15 @@
             "tests": []
         },
         {
-            "_id": "5e8eb547-2310-4412-b383-8459af53ced9",
-            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
-            "containerId": "ef10bf0f-079e-4b6d-bccd-761697392111",
+            "_id": "f84faa77-8f4c-4241-aa79-a8b5e9adb645",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "369fbacc-381d-463c-a95a-69bf54a3ed6f",
             "name": "Login",
             "url": "user/login",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2023-06-05T01:00:11.462Z",
-            "modified": "2023-06-06T23:44:28.072Z",
+            "created": "2023-06-09T03:23:51.133Z",
+            "modified": "2023-06-09T05:46:27.645Z",
             "headers": [],
             "params": [],
             "body": {
@@ -145,26 +145,26 @@
                 "form": [
                     {
                         "name": "username",
-                        "value": "fcabrera"
+                        "value": "ADMINB"
                     },
                     {
                         "name": "password",
-                        "value": "123"
+                        "value": "ADMINB"
                     }
                 ]
             },
             "tests": []
         },
         {
-            "_id": "8310bb88-a32a-47a7-ba9c-c636c2af2c3c",
-            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
-            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "_id": "2f54f131-ed20-405b-ba9c-f76de93023f4",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "80491c3a-25dc-44b3-a68c-b1e5d3c64712",
             "name": "Add User",
             "url": "user/add",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2023-06-05T01:09:17.790Z",
-            "modified": "2023-06-06T23:13:53.125Z",
+            "created": "2023-06-09T03:23:51.134Z",
+            "modified": "2023-06-09T03:23:51.134Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -225,15 +225,15 @@
             "tests": []
         },
         {
-            "_id": "78e25dbe-0762-46da-a22a-0bc510fe3ebb",
-            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
-            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "_id": "87c859d4-5f5c-4cb6-bb3a-bd37cd274d24",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "80491c3a-25dc-44b3-a68c-b1e5d3c64712",
             "name": "Get Users",
             "url": "user/get",
             "method": "GET",
             "sortNum": 40000,
-            "created": "2023-06-05T01:50:05.832Z",
-            "modified": "2023-06-06T23:19:38.197Z",
+            "created": "2023-06-09T03:23:51.135Z",
+            "modified": "2023-06-09T03:23:51.135Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -244,15 +244,15 @@
             "tests": []
         },
         {
-            "_id": "539bbb03-07ef-470f-a366-1a9bd2a87039",
-            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
-            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "_id": "e6c4e7b4-7c06-4d56-bb3e-85a505535128",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "80491c3a-25dc-44b3-a68c-b1e5d3c64712",
             "name": "Update User",
             "url": "user/update/647fbe6a1ef9ef436cbd9df3",
             "method": "PUT",
             "sortNum": 50000,
-            "created": "2023-06-05T02:28:31.727Z",
-            "modified": "2023-06-06T23:17:06.880Z",
+            "created": "2023-06-09T03:23:51.136Z",
+            "modified": "2023-06-09T03:23:51.136Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -311,15 +311,15 @@
             "tests": []
         },
         {
-            "_id": "afdb72c4-ab2e-4438-8d5d-79d324a0b5f6",
-            "colId": "c14b638a-e473-4241-a8b6-73d9c1ff633b",
-            "containerId": "64a5d8cf-ee68-4d49-83e2-ee184e5c5448",
+            "_id": "5e985b56-f25d-421f-a20c-bb35bff44b8e",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "80491c3a-25dc-44b3-a68c-b1e5d3c64712",
             "name": "Delete User",
             "url": "user/delete/647fbd3fa7a9766f2839eb67",
             "method": "DELETE",
             "sortNum": 60000,
-            "created": "2023-06-05T02:48:20.518Z",
-            "modified": "2023-06-06T23:14:38.158Z",
+            "created": "2023-06-09T03:23:51.137Z",
+            "modified": "2023-06-09T03:23:51.137Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -327,6 +327,132 @@
                 }
             ],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "dafa1c9d-1562-4d3f-819c-8bc65c5fbb09",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "63595b89-cbca-48fe-88e7-b1d96b1dd07c",
+            "name": "test",
+            "url": "service/",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-06-09T03:26:15.273Z",
+            "modified": "2023-06-09T03:31:24.312Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fbddb533-cbea-418d-9e5b-c7f07562593a",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "63595b89-cbca-48fe-88e7-b1d96b1dd07c",
+            "name": "addService",
+            "url": "service/addService",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-06-09T03:39:18.030Z",
+            "modified": "2023-06-09T06:34:58.242Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg2Mjg5NTg3LCJleHAiOjE2ODYyOTY3ODd9.lNeFWdaOZOdIOzo40YcJmEdk8CwD4Nx1XfIkBUiiaWA\""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Actu"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Esto se Actualiza"
+                    },
+                    {
+                        "name": "amount",
+                        "value": "2000000"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "32b960b1-b13f-47fd-8228-7db527c6f008",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "63595b89-cbca-48fe-88e7-b1d96b1dd07c",
+            "name": "getServices",
+            "url": "service/getServices",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-06-09T04:53:17.620Z",
+            "modified": "2023-06-09T05:46:40.039Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg2Mjg5NTg3LCJleHAiOjE2ODYyOTY3ODd9.lNeFWdaOZOdIOzo40YcJmEdk8CwD4Nx1XfIkBUiiaWA\""
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2a0249b1-9ebe-443f-aea1-028b8271adf7",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "63595b89-cbca-48fe-88e7-b1d96b1dd07c",
+            "name": "deleteService",
+            "url": "service/deleteService/6482c356b5224558b15e652c",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2023-06-09T06:17:12.013Z",
+            "modified": "2023-06-09T06:17:49.219Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg2Mjg5NTg3LCJleHAiOjE2ODYyOTY3ODd9.lNeFWdaOZOdIOzo40YcJmEdk8CwD4Nx1XfIkBUiiaWA\""
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "506bedbd-6ee9-4a22-a879-af6be6a4d77c",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "63595b89-cbca-48fe-88e7-b1d96b1dd07c",
+            "name": "updateService ",
+            "url": "service/updateService/6482c812b38af15c2e45e903",
+            "method": "PUT",
+            "sortNum": 110000,
+            "created": "2023-06-09T06:28:18.712Z",
+            "modified": "2023-06-09T06:35:34.460Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg2Mjg5NTg3LCJleHAiOjE2ODYyOTY3ODd9.lNeFWdaOZOdIOzo40YcJmEdk8CwD4Nx1XfIkBUiiaWA\""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Holi"
+                    },
+                    {
+                        "name": "description",
+                        "value": "HOli"
+                    },
+                    {
+                        "name": "amount",
+                        "value": "1"
+                    }
+                ]
+            },
             "tests": []
         }
     ],

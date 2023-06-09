@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 exports.ensureAuth = (req, res, next)=>{
     if(!req.headers.authorization){
-        return res.status(403).send({message: `Doesn't contain headers "AUTHORIZATION"`});
+        return res.status(403).send({message: 'Doesn\'t contain headers "AUTHORIZATION"'});
     }else{
         try{
             let token = req.headers.authorization.replace(/[""]+/g, '');
@@ -19,7 +19,7 @@ exports.ensureAuth = (req, res, next)=>{
         req.user = payload;
         next();
     }
-}
+};
 
 exports.isAdmin = async(req, res, next)=>{
     try{
@@ -32,7 +32,7 @@ exports.isAdmin = async(req, res, next)=>{
         console.error(err);
         return res.status(403).send({message: 'Not authorized.'});
     }
-}
+};
 
 exports.isClient = async(req, res, next)=>{
     try{
@@ -45,4 +45,4 @@ exports.isClient = async(req, res, next)=>{
         console.error(err);
         return res.status(403).send({message: 'Not authorized.'});
     }
-}
+};
