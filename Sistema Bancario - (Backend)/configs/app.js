@@ -16,7 +16,7 @@ const userRoutes = require('../src/user/user.routes');
 const serviceRoutes = require('../src/service/service.routes');
 //Rutas de deposit
 //Rutas de favorites
-//Rutas de movement
+const movementRoutes = require('../src/movement/movement.routes');
 //Rutas de service
 
 //Configurar el servidor de express
@@ -30,7 +30,7 @@ app.use(morgan('dev'));
 app.use('/user', userRoutes);
 //Rutas de colecciónv deposit
 //Rutas de colección favorites
-//Rutas de colección movement
+app.use('/movement', movementRoutes);
 //Rutas de colección service
 app.use('/service',serviceRoutes);
 
