@@ -11,6 +11,7 @@ exports.createToken = (user)=>{
         email: user.email,
         phone: user.phone,
         role: user.role,
+        accountNumber: user.accountNumber,
         iat: Math.floor(Date.now()/ 1000),
         exp: Math.floor(Date.now()/ 1000) + (60 * 120)
     }

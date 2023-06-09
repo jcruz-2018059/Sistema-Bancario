@@ -9,4 +9,7 @@ const { save, saveValidation } = require('../../utils/validate');
 //Funciones generales
 api.get('/', movementController.test);
 
+//Funciones de Client
+api.post('/buy/:service', [ensureAuth, isClient], movementController.buy);
+
 module.exports = api;
