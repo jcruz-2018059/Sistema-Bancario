@@ -19,3 +19,12 @@ exports.addService = async(req,res)=>{
     }
 };
 
+exports.getServices = async(req,res)=>{
+    try{
+        let service = await Service.find();
+        return res.send(service);
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting Service', error: err.message});
+    }
+};
