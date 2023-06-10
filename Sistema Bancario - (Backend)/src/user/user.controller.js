@@ -55,10 +55,19 @@ exports.login = async(req, res)=>{
                 name: user.name,
                 role: user.role
             };
+            // Obtén la fecha actual
+            let currentDate = new Date();
+            let lastReset = user.lastReset;
+            if(lastReset < currentDate.setHours(0,0,0,0)){
+                await User.findOneAndUpdate(
+                    {username: data.username},
+                    { $set: { dailyTransfer: 0, lastReset: currentDate}},
+                    {new: true}
+                );
+            }
             return res.send({message: 'Usuario logeado satisfactoriamente.', token, userLogged});
         }
         return res.status(404).send({message: 'Credenciales inválidas.'});
-
     }catch(err){
         console.error(err);
         return res.status(500).send({message: 'Error logging.'});

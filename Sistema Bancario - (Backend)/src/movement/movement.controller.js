@@ -46,20 +46,33 @@ exports.transfer = async(req, res)=>{
         let data = req.body;
         let paramsReq = {
             amount: data.amount,
-            userDestination: data.userDestination
+            userDestination: data.userDestination,
+            userDestinationDPI: data.userDestinationDPI
         };
         let validate = validateData(paramsReq);
         if(validate){
             return res.status(400).send({validate});
         }
         let user = await User.findOne({_id: req.user.sub});
+        if(user.dailyTransfer >= 10000){
+            return res.status(400).send({message: 'Límite de transferencias diarias superado.'});
+        }
+        if((user.dailyTransfer + Number(data.amount))> 10000){
+            return res.status(400).send({message: 'El monto supera el límite de transferencias diarias.'});
+        }
         if(user.balance < data.amount){
             return res.status(400).send({message: '¡No tienes los fondos necesarios para la transferencia!'});
         }
-        let existUser = await User.findOne({accountNumber: data.userDestination});
+        if(data.amount > 2000){
+            return res.status(400).send({message: 'El máximo de transferecia soportado es de Q2000.00'});
+        }
+        let existUser = await User.findOne({accountNumber: data.userDestination, DPI: data.userDestinationDPI});
         if(!existUser){
-            return res.status(400).send({message: 'Usuario no encontrado.'});
-        } 
+            return res.status(400).send({message: 'Número de cuenta o DPI inválidos.'});
+        }
+        if(Object(existUser._id).valueOf() === req.user.sub || existUser.DPI === req.user.DPI){
+            return res.status(400).send({message: '¡No puedes transferirte a tí mismo!'});
+        }
         let params = {
             type: 'TRANSFER',
             amount: data.amount,
@@ -75,12 +88,12 @@ exports.transfer = async(req, res)=>{
         let savedMovement = await Movement.findOne({_id: movement._id}).populate('userDestination', ['name', 'surname', 'accountNumber']).populate('userOrigin', ['name', 'surname', 'accountNumber']);
         await User.findOneAndUpdate(
             {_id: req.user.sub},
-            {balance: (user.balance - data.amount)},
+            {balance: (user.balance - data.amount), dailyTransfer: (user.dailyTransfer + Number(data.amount))},
             {new: true}
         );
         await User.findOneAndUpdate(
             {_id: Object(existUser._id).valueOf()},
-            {balance: (existUser.balance + data.amount)},
+            {balance: (existUser.balance + Number(data.amount))},
             {new: true}
         );
         return res.send({message: '¡Transacción satisfactoria!', savedMovement});

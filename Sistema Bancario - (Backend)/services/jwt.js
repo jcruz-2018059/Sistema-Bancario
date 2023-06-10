@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const jwt = require('jsonwebtoken');
 
@@ -10,11 +10,12 @@ exports.createToken = (user)=>{
         username: user.username,
         email: user.email,
         phone: user.phone,
+        DPI: user.DPI,
         role: user.role,
         accountNumber: user.accountNumber,
         iat: Math.floor(Date.now()/ 1000),
         exp: Math.floor(Date.now()/ 1000) + (60 * 120)
-    }
+    };
     let token = jwt.sign(payload, `${process.env.SECRET_KEY}`);
     return token;
-}
+};
