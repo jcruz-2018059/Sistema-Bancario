@@ -116,3 +116,19 @@ exports.get = async(req, res)=>{
         return res.status(500).send({message: 'Error getting movements.', error: err.message});
     }
 };
+
+exports.getLast5 = async(req, res)=>{
+    try{
+        let user = req.params.id;
+        let movements = await Movement.find({$or: [{userOrigin: user}, {userDestination: user}]})
+            .populate('userOrigin', ['name', 'surname', 'accountNumber', 'DPI'])
+            .populate('userDestination', ['name', 'surname', 'accountNumber'])
+            .populate('service')
+            .sort({date: 'desc'})
+            .limit(5);
+        return res.send({message: 'Movements found: ', movements});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting movements.', error: err.message});
+    }
+};
