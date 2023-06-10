@@ -2,8 +2,6 @@
 
 const mongoose = require('mongoose');
 
-// name surname username accountNumber DPI address phone email password workName monthlyIncome balance role
-
 const movementScheme = mongoose.Schema({
     type: {
         type: String,
@@ -17,7 +15,7 @@ const movementScheme = mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     date: {
         type: Date,
@@ -26,18 +24,20 @@ const movementScheme = mongoose.Schema({
     },
     userOrigin: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: 'User',
         required: true,
     },
+    //TRANSFERENCIA
     userDestination: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
-        required: true,
+        ref: 'User',
+        required: false,
     },
+    //COMPRA
     service: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "service",
-        required: true,
+        ref: 'Service',
+        required: false,
     }
 }, {versionKey: false});
 

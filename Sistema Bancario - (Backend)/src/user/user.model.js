@@ -61,6 +61,21 @@ const userScheme = mongoose.Schema({
         type: Number,
         required: true
     },
+    dailyTransfer:{
+        type: Number,
+        required: true,
+        default: 0 
+    },
+    lastReset: {
+        type: Date,
+        required: true,
+        default: Date.now()
+    },
+    movements: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     role: {
         type: String,
         required: true,

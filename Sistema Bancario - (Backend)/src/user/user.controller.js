@@ -55,10 +55,19 @@ exports.login = async(req, res)=>{
                 name: user.name,
                 role: user.role
             };
+            // Obtén la fecha actual
+            let currentDate = new Date();
+            let lastReset = user.lastReset;
+            if(lastReset < currentDate.setHours(0,0,0,0)){
+                await User.findOneAndUpdate(
+                    {username: data.username},
+                    { $set: { dailyTransfer: 0, lastReset: currentDate}},
+                    {new: true}
+                );
+            }
             return res.send({message: 'Usuario logeado satisfactoriamente.', token, userLogged});
         }
         return res.status(404).send({message: 'Credenciales inválidas.'});
-
     }catch(err){
         console.error(err);
         return res.status(500).send({message: 'Error logging.'});
@@ -113,6 +122,24 @@ exports.add = async(req, res)=>{
 exports.get = async(req, res)=>{
     try{
         let users = await User.find().select('name surname username accountNumber DPI address phone email workName balance');
+        return res.send({message: 'Users found: ', users});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting users.'});
+    }
+};
+
+exports.getByMovements = async(req, res)=>{
+    try{
+        let data = req.body;
+        let params = {
+            sort: data.sort
+        };
+        let validate = validateData(params);
+        if(validate){
+            return res.status(400).send({validate});
+        }
+        let users = await User.find().sort({movements: `${data.sort}`}).select('name surname username accountNumber DPI address phone email workName balance movements');
         return res.send({message: 'Users found: ', users});
     }catch(err){
         console.error(err);
