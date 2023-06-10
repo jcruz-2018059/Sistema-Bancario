@@ -31,7 +31,7 @@ exports.buy = async(req, res)=>{
         let savedMovement = await Movement.findOne({_id: movement._id}).populate('service').populate('userOrigin', ['name', 'surname', 'accountNumber']);
         await User.findOneAndUpdate(
             {_id: req.user.sub},
-            {balance: (user.balance - amount)},
+            {balance: (user.balance - amount), movements: (user.movements + 1)},
             {new: true}
         );
         return res.send({message: '¡Compra satisfactoria!', savedMovement});
@@ -88,12 +88,12 @@ exports.transfer = async(req, res)=>{
         let savedMovement = await Movement.findOne({_id: movement._id}).populate('userDestination', ['name', 'surname', 'accountNumber']).populate('userOrigin', ['name', 'surname', 'accountNumber']);
         await User.findOneAndUpdate(
             {_id: req.user.sub},
-            {balance: (user.balance - data.amount), dailyTransfer: (user.dailyTransfer + Number(data.amount))},
+            {balance: (user.balance - data.amount), dailyTransfer: (user.dailyTransfer + Number(data.amount)), movements: (user.movements + 1)},
             {new: true}
         );
         await User.findOneAndUpdate(
             {_id: Object(existUser._id).valueOf()},
-            {balance: (existUser.balance + Number(data.amount))},
+            {balance: (existUser.balance + Number(data.amount)), movements: (existUser.movements + 1)},
             {new: true}
         );
         return res.send({message: '¡Transacción satisfactoria!', savedMovement});

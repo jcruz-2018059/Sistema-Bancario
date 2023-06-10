@@ -129,6 +129,24 @@ exports.get = async(req, res)=>{
     }
 };
 
+exports.getByMovements = async(req, res)=>{
+    try{
+        let data = req.body;
+        let params = {
+            sort: data.sort
+        };
+        let validate = validateData(params);
+        if(validate){
+            return res.status(400).send({validate});
+        }
+        let users = await User.find().sort({movements: `${data.sort}`}).select('name surname username accountNumber DPI address phone email workName balance movements');
+        return res.send({message: 'Users found: ', users});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting users.'});
+    }
+};
+
 exports.update = async(req, res)=>{
     try{
         let data = req.body;
