@@ -24,19 +24,19 @@ const movementScheme = mongoose.Schema({
     },
     userOrigin: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: 'User',
         required: true,
     },
     //TRANSFERENCIA
     userDestination: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: 'User',
         required: false,
     },
     //COMPRA
     service: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "service",
+        ref: 'Service',
         required: false,
     }
 }, {versionKey: false});
