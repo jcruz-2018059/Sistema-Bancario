@@ -102,3 +102,17 @@ exports.transfer = async(req, res)=>{
         return res.status(500).send({message: 'Error transfering.', error: err.message});
     }
 };
+
+exports.get = async(req, res)=>{
+    try{
+        let user = req.user.sub;
+        let movements = await Movement.find({$or: [{userOrigin: user}, {userDestination: user}]})
+            .populate('userOrigin', ['name', 'surname', 'accountNumber', 'DPI'])
+            .populate('userDestination', ['name', 'surname', 'accountNumber'])
+            .populate('service');
+        return res.send({message: 'Movements found: ', movements});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting movements.', error: err.message});
+    }
+};

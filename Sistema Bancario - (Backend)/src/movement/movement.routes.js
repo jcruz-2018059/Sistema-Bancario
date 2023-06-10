@@ -11,5 +11,6 @@ api.get('/', movementController.test);
 //Funciones de Client
 api.post('/buy/:service', [ensureAuth, isClient], movementController.buy);
 api.post('/transfer', [ensureAuth, isClient], movementController.transfer);
+api.get('/get', [ensureAuth, isClient], movementController.get);
 
 module.exports = api;
