@@ -5,7 +5,6 @@ export const DepositsPage = () => {
   return (
     <>
     <Outlet></Outlet>
-
     </>
   )
 }

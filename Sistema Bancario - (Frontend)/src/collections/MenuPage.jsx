@@ -65,7 +65,7 @@ export const MenuPage = () => {
             <hr />
           </div>
 
-          <div className='w-100' >
+          <div className='w-100' style={{backgroundColor: '#F2F2F2 '}}>
             <Nabvar></Nabvar>
             <Outlet></Outlet>
           </div>

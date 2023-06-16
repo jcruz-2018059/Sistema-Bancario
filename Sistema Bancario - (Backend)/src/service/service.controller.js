@@ -65,3 +65,14 @@ exports.updateService = async(req,res)=>{
         return res.status(500).send({message: 'Error updating Service', error: err.message});
     }
 };
+
+exports.getService = async(req,res)=>{
+    try{
+        let serviceId = req.params.id
+        let service = await Service.findOne({_id: serviceId}) ;
+        return res.send(service);
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting Service', error: err.message});
+    }
+};
