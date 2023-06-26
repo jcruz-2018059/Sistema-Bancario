@@ -1,5 +1,5 @@
 import App from './App'
-import React, {createContext, useState, useEffect} from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
@@ -21,6 +21,14 @@ import { ProductsPage } from './pages/ProductsPage/ProductsPage';
 import { ViewProductsPage } from './pages/ProductsPage/ViewProductsPage';
 import { AddProductsPage } from './pages/ProductsPage/AddProductsPage';
 import { UpdateProductsPage } from './pages/ProductsPage/UpdateProductsPage';
+import { FavoritesPage } from './pages/FavoritsPage/FavoritesPage';
+import { ViewFavoritesPage } from './pages/FavoritsPage/ViewFavoritesPage';
+import { AddFavoritesPage } from './pages/FavoritsPage/AddFavoritesPage';
+import { UpdateFavoritesPage } from './pages/FavoritsPage/UpdateFavoritesPage';
+import { MovementsPage } from './pages/MovementsPage/MovementsPage';
+import { ViewMovementsPage } from './pages/MovementsPage/ViewMovementsPage';
+import { AddMovementsPage } from './pages/MovementsPage/AddMovementsPage';
+import { UpdateMovementsPage } from './pages/MovementsPage/UpdateMovementsPage';
 
 
 
@@ -50,7 +58,7 @@ export const Index = () => {
         {
             path: '/',
             element: <App></App>,
-            errorElement: <NotFoundPage/>,
+            errorElement: <NotFoundPage />,
             children: [
                 {
                     path: '/',
@@ -66,7 +74,7 @@ export const Index = () => {
                     children: [
                         {
                             path: '',
-                            element:  <MenuPage></MenuPage>,
+                            element: <MenuPage></MenuPage>,
                             children: [
                                 {
                                     path: 'account',
@@ -139,18 +147,54 @@ export const Index = () => {
                                             element: <UpdateProductsPage></UpdateProductsPage>
                                         }
                                     ]
+                                },
+                                {
+                                    path: 'favorites',
+                                    element: <FavoritesPage></FavoritesPage>,
+                                    children: [
+                                        {
+                                            path: '',
+                                            element: <ViewFavoritesPage></ViewFavoritesPage>
+                                        },
+                                        {
+                                            path: 'add',
+                                            element: <AddFavoritesPage></AddFavoritesPage>
+                                        },
+                                        {
+                                            path: 'update/:id',
+                                            element: <UpdateFavoritesPage></UpdateFavoritesPage>
+                                        },
+                                    ]
+                                },
+                                {
+                                    path: 'movements',
+                                    element: <MovementsPage></MovementsPage>,
+                                    children: [
+                                        {
+                                            path: '',
+                                            element: <ViewMovementsPage></ViewMovementsPage>
+                                        },
+                                        {
+                                            path: 'add',
+                                            element: <AddMovementsPage></AddMovementsPage>
+                                        },
+                                        {
+                                            path: 'update/:id',
+                                            element: <UpdateMovementsPage></UpdateMovementsPage>
+                                        }
+                                    ]
                                 }
 
                             ]
                         }
                     ]
-                }     
+                }
             ]
-        }     
+        }
     ])
 
     return (
-        <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser}}>
+        <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser }}>
             <RouterProvider router={routes} />
         </AuthContext.Provider>
     )

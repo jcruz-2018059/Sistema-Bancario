@@ -16,7 +16,7 @@ export const MenuPage = () => {
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
               <li className="nav-item">
-                <Link  className="nav-link text-white" aria-current="page">
+                <Link className="nav-link text-white" aria-current="page">
                   <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home" /></svg>
                   Inicio
                 </Link>
@@ -32,7 +32,7 @@ export const MenuPage = () => {
                 ) : <></>
               }
               {
-                role == 'ADMIN' ? (
+                role == 'ADMIN'||'CLIENT' ? (
                   <li>
                     <Link to='products' className="nav-link text-white">
                       <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table" /></svg>
@@ -52,20 +52,36 @@ export const MenuPage = () => {
                 ) : <></>
               }
               {
-                role == 'ADMIN' ? (
+                role == 'CLIENT' ? (
                   <li>
-                    <Link to='account' className="nav-link text-white">
-                      <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>
-                      Mi cuenta
+                    <Link to='movements' className="nav-link text-white">
+                      <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table" /></svg>
+                      Movimientos
                     </Link>
                   </li>
                 ) : <></>
               }
+              {
+                role == 'CLIENT' ? (
+                  <li>
+                    <Link to='favorites' className="nav-link text-white">
+                      <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table" /></svg>
+                      Favoritos
+                    </Link>
+                  </li>
+                ) : <></>
+              }
+              <li>
+                <Link to='account' className="nav-link text-white">
+                  <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>
+                  Mi cuenta
+                </Link>
+              </li>
             </ul>
             <hr />
           </div>
 
-          <div className='w-100' style={{backgroundColor: '#F2F2F2 '}}>
+          <div className='w-100' style={{ backgroundColor: '#F2F2F2 ' }}>
             <Nabvar></Nabvar>
             <Outlet></Outlet>
           </div>
