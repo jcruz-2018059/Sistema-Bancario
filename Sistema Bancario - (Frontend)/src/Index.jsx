@@ -62,7 +62,7 @@ export const Index = () => {
                 },
                 {
                     path: '/start',
-                    element:  <Menu></Menu>,
+                    element: loggedIn ? <Menu></Menu> : <LoginPage></LoginPage>,
                     children: [
                         {
                             path: '',
