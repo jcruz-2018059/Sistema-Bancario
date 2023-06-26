@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom'
 import { Nabvar } from '../components/Navbar'
 
 export const MenuPage = () => {
-  const role = localStorage.getItem('role')
+  const role = 'ADMIN'
   return (
     <>
       <div className=' vh-100'>
