@@ -252,3 +252,14 @@ exports.getByLogin = async(req, res)=>{
         return res.status(500).send({message: 'Error getting users.'});
     }
 };
+
+exports.getById = async(req, res)=>{
+    try{
+        let id = req.params.id
+        let users = await User.findOne({_id:id});
+        return res.send({message: 'User found: ', users});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting users.'});
+    }
+};

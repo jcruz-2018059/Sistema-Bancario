@@ -20,5 +20,6 @@ api.get('/movement/get', [ensureAuth, isAdmin], userController.getByMovements);
 //Funciones de CLIENT
 api.put('/update', [ensureAuth, isClient, save, saveValidation], userController.updateClient);
 api.get('/getByLogin', ensureAuth, userController.getByLogin );
+api.get('/getById/:id', ensureAuth, userController.getById);
 
 module.exports = api;

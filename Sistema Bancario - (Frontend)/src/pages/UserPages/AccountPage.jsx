@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2';
-import { Users } from '../../collections/Users';
+
 
 export const AccountPage = () => {
     const token = localStorage.getItem('token');
@@ -84,7 +84,7 @@ export const AccountPage = () => {
                                             <br />
                                             <div className="row">
                                                 <div className="form-group col-md-6">
-                                                    <Link to='../users/update/:id'>
+                                                    <Link to={`../users/update/${user._id}`}>
                                                         <button className="btn text-light" type="submit" style={{ backgroundColor: '#00043a', borderRadius: 100 }}>EditarCuenta</button>
                                                     </Link>
                                                 </div>
