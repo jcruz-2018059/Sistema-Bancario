@@ -83,11 +83,15 @@ export const AccountPage = () => {
                                             </p>
                                             <br />
                                             <div className="row">
+                                            {
+                                                role != 'ADMIN' ? (
                                                 <div className="form-group col-md-6">
                                                     <Link to={`../users/update/${user._id}`}>
                                                         <button className="btn text-light" type="submit" style={{ backgroundColor: '#00043a', borderRadius: 100 }}>EditarCuenta</button>
                                                     </Link>
                                                 </div>
+                                                ) : <></>
+                                            }
                                                 {
                                                 role != 'ADMIN' ? (
                                                 <div className="form-group col-md-6">

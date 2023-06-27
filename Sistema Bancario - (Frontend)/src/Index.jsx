@@ -29,6 +29,7 @@ import { MovementsPage } from './pages/MovementsPage/MovementsPage';
 import { ViewMovementsPage } from './pages/MovementsPage/ViewMovementsPage';
 import { AddMovementsPage } from './pages/MovementsPage/AddMovementsPage';
 import { UpdateMovementsPage } from './pages/MovementsPage/UpdateMovementsPage';
+import { AddAdminPage } from './pages/UserPages/AddAdminPage';
 
 
 
@@ -101,6 +102,10 @@ export const Index = () => {
                                         {
                                             path: 'add',
                                             element: <AddUserPage></AddUserPage>
+                                        },
+                                        {
+                                            path: 'addAdmin',
+                                            element: <AddAdminPage></AddAdminPage>
                                         },
                                         {
                                             path: 'update/:id',

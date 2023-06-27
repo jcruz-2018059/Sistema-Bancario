@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export const AddUserPage = () => {
+export const AddAdminPage = () => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const config = {
@@ -28,11 +28,11 @@ export const AddUserPage = () => {
                 workName: document.getElementById('workName').value,
                 monthlyIncome: document.getElementById('monthlyIncome').value,
                 balance: document.getElementById('balance').value,
-                role: 'CLIENT'
+                role: 'ADMIN'
             }
             const { data } = await axios.post('http://localhost:3200/user/add', user, config);
             Swal.fire({
-                title: data.message || 'Evento Agregado',
+                title: data.message || 'Usuario Agregado',
                 icon: 'success',
                 timer: 4000
             })
@@ -55,7 +55,7 @@ export const AddUserPage = () => {
                         <div className="text-center mb-3">
                             <div className="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i className="bi bi-envelope"></i></div>
                             <h1 className="fw-bolder">Agregar Usuario</h1>
-                            <p className="lead fw-normal text-muted mb-0">Añadir Clientes</p>
+                            <p className="lead fw-normal text-muted mb-0">Añadir Administrador</p>
                         </div>
                         <div className="row gx-5 justify-content-center">
                             <div className="col-lg-8 col-xl-6">
@@ -101,7 +101,7 @@ export const AddUserPage = () => {
                                         </div>
                                         <div className="form-group col-md-6">
                                             <label htmlFor="inputIngresosA">Ingresos de Apertura</label>
-                                            <input type="number" className="form-control" placeholder="Ingresos de Apertura" id="balance" style={{ borderColor: '#00043a', borderWidth: 4 }} />
+                                            <input type="text" className="form-control" placeholder="Ingresos de Apertura" id="balance" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                         </div>
                                     </div>
                                     <div className="form-group">

@@ -120,15 +120,18 @@ exports.add = async(req, res)=>{
     }
 };
 
-exports.get = async(req, res)=>{
-    try{
-        let users = await User.find();
-        return res.send({message: 'Users found: ', users});
-    }catch(err){
-        console.error(err);
-        return res.status(500).send({message: 'Error getting users.'});
+exports.get = async (req, res) => {
+    try {
+      let users = await User.find();
+      const adminUsers = users.filter(user => user.role === 'ADMIN');
+      const otherUsers = users.filter(user => user.role !== 'ADMIN');
+      const sortedUsers = adminUsers.concat(otherUsers);
+      return res.send({ message: 'Users found:', users: sortedUsers });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send({ message: 'Error getting users.' });
     }
-};
+  };
 
 exports.getByMovements = async(req, res)=>{
     try{
