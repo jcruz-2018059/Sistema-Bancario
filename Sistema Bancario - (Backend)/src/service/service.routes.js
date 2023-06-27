@@ -8,7 +8,7 @@ const {ensureAuth, isAdmin}   = require('../../services/authenticated');
 
 api.get('/',serviceController.test);
 api.post('/addService',[ ensureAuth, isAdmin ] , serviceController.addService);
-api.get('/getServices', [ ensureAuth, isAdmin ], serviceController.getServices);
+api.get('/getServices', [ ensureAuth], serviceController.getServices);
 api.delete('/deleteService/:id', [ensureAuth, isAdmin], serviceController.deleteService);
 api.put('/updateService/:id', [ensureAuth, isAdmin], serviceController.updateService);
 api.get('/getService/:id', [ ensureAuth, isAdmin ], serviceController.getService);

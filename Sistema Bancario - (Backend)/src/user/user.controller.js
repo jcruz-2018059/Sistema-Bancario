@@ -90,6 +90,7 @@ exports.add = async(req, res)=>{
             password: data.password,
             workName: data.workName,
             monthlyIncome: data.monthlyIncome,
+            balance: data.balance,
             role: data.role
         };
         let validate = validateData(params);
@@ -121,7 +122,7 @@ exports.add = async(req, res)=>{
 
 exports.get = async(req, res)=>{
     try{
-        let users = await User.find().select('name surname username accountNumber DPI address phone email workName balance');
+        let users = await User.find();
         return res.send({message: 'Users found: ', users});
     }catch(err){
         console.error(err);
@@ -238,5 +239,16 @@ exports.updateClient = async(req, res)=>{
     }catch(err){
         console.error(err);
         return res.status(500).send({message: 'Error updating user.'});
+    }
+};
+
+exports.getByLogin = async(req, res)=>{
+    try{
+        let id = req.user.sub
+        let users = await User.findOne({_id:id});
+        return res.send({message: 'User found: ', users});
+    }catch(err){
+        console.error(err);
+        return res.status(500).send({message: 'Error getting users.'});
     }
 };
