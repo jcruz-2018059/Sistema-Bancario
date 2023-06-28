@@ -14,6 +14,7 @@ const port = process.env.PORT || 3200;
 // Rutas
 const userRoutes = require('../src/user/user.routes');
 const serviceRoutes = require('../src/service/service.routes');
+const favoriteRoutes = require('../src/favorites/favorites.routes');
 //Rutas de deposit
 //Rutas de favorites
 //Rutas de movement
@@ -30,6 +31,7 @@ app.use(morgan('dev'));
 app.use('/user', userRoutes);
 //Rutas de colecciónv deposit
 //Rutas de colección favorites
+app.use('/favorite', favoriteRoutes);
 //Rutas de colección movement
 //Rutas de colección service
 app.use('/service',serviceRoutes);

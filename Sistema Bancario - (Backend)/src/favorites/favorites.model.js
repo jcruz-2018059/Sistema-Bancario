@@ -4,8 +4,15 @@ const mongoose = require('mongoose');
 
 
 const favoritesSchema = mongoose.Schema({
-    cliente:{
-        type: String,
+    client:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        unique: true,
+        required: true
+    },
+    clientLogged:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     alias:{

@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Sistema Bancario",
-    "dateExported": "2023-06-09T06:39:04.362Z",
+    "dateExported": "2023-06-28T04:11:56.291Z",
     "version": "1.1",
     "folders": [
         {
@@ -136,7 +136,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-06-09T03:23:51.133Z",
-            "modified": "2023-06-09T05:46:27.645Z",
+            "modified": "2023-06-28T03:01:56.612Z",
             "headers": [],
             "params": [],
             "body": {
@@ -164,11 +164,11 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2023-06-09T03:23:51.134Z",
-            "modified": "2023-06-09T03:23:51.134Z",
+            "modified": "2023-06-28T02:58:53.135Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDdkNGI5ZDY5ZGU1NWIxNDRmNTE1ZmQiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg2MDkzMDk0LCJleHAiOjE2ODYxMDAyOTR9.Wh6hoXeGmZ09toF1TjjfyU-100bF-OMuTm8slC6zZlE\""
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg3OTIxMTE0LCJleHAiOjE2ODc5MjgzMTR9.B4sgKwiqqKshhx89uYMi_dz0O8M197P7ZheAURPE_j8\""
                 }
             ],
             "params": [],
@@ -454,6 +454,134 @@
                 ]
             },
             "tests": []
+        },
+        {
+            "_id": "d45cf6ff-2ba7-4879-aa12-b350b6fd386b",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "28c3788f-4926-427e-a010-9db5bec23a05",
+            "name": "test",
+            "url": "favorite/",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-06-28T01:23:54.608Z",
+            "modified": "2023-06-28T01:49:53.904Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4f6cb60c-aa1a-46e0-a9b8-99edf64ee9bb",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "28c3788f-4926-427e-a010-9db5bec23a05",
+            "name": "add",
+            "url": "favorite/addFavorite",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2023-06-28T01:59:26.582Z",
+            "modified": "2023-06-28T03:02:07.278Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg3OTIxMzE2LCJleHAiOjE2ODc5Mjg1MTZ9.7ei0vUPU_XRQRQyUQH54irWtW7geG-AEAJsQNaophys\""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "client",
+                        "value": "649ba1edb6c0aad5d5734646"
+                    },
+                    {
+                        "name": "alias",
+                        "value": "Pepe"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "94e65330-7b60-44d6-a446-7f3a4838e493",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "28c3788f-4926-427e-a010-9db5bec23a05",
+            "name": "getFavorites",
+            "url": "favorite/getFavorites",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-06-28T03:07:43.053Z",
+            "modified": "2023-06-28T03:08:23.675Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg3OTIxMzE2LCJleHAiOjE2ODc5Mjg1MTZ9.7ei0vUPU_XRQRQyUQH54irWtW7geG-AEAJsQNaophys\""
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2d095351-f19e-4f3a-a2bc-301d6acff4d2",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "28c3788f-4926-427e-a010-9db5bec23a05",
+            "name": "getFavorite",
+            "url": "",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2023-06-28T03:11:13.322Z",
+            "modified": "2023-06-28T03:11:13.322Z",
+            "headers": []
+        },
+        {
+            "_id": "c5016a08-e806-42cd-a124-7ed5267f572b",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "28c3788f-4926-427e-a010-9db5bec23a05",
+            "name": "getFavorite",
+            "url": "favorite/getfavorite/649ba2afb6c0aad5d573464b",
+            "method": "DELETE",
+            "sortNum": 160000,
+            "created": "2023-06-28T03:11:21.787Z",
+            "modified": "2023-06-28T03:16:47.132Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg3OTIxMzE2LCJleHAiOjE2ODc5Mjg1MTZ9.7ei0vUPU_XRQRQyUQH54irWtW7geG-AEAJsQNaophys\""
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8fc6de57-637c-4568-99f5-f0ad1d708316",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "28c3788f-4926-427e-a010-9db5bec23a05",
+            "name": "deleteFavorite",
+            "url": "favorite/deleteFavorite/649ba2afb6c0aad5d573464b",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2023-06-28T03:14:33.179Z",
+            "modified": "2023-06-28T03:17:14.938Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDgyOWQwOWEzNjFiNWFiY2MxMjUxMjYiLCJuYW1lIjoiR2VuZXJhbCIsInN1cm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcm5hbWUiOiJhZG1pbmIiLCJlbWFpbCI6IkFETUlOQkBiYW5rLnN5c3RlbS5vcmciLCJwaG9uZSI6Iis1MDIgNTg5NyAyMTQ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg3OTIxMzE2LCJleHAiOjE2ODc5Mjg1MTZ9.7ei0vUPU_XRQRQyUQH54irWtW7geG-AEAJsQNaophys\""
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "dceca3c3-6e47-46d5-8b1d-928224a1054b",
+            "colId": "98760cd1-81a2-4850-8753-17aa2deef310",
+            "containerId": "28c3788f-4926-427e-a010-9db5bec23a05",
+            "name": "updateFavorites",
+            "url": "",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2023-06-28T03:22:48.073Z",
+            "modified": "2023-06-28T03:22:48.074Z",
+            "headers": []
         }
     ],
     "settings": {
