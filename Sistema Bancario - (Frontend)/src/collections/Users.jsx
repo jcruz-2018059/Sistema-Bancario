@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Users = ({ _id, name, surname, DPI, phone, email, balance, role }) => {
-  const roleClass = role === 'ADMIN' ? 'badge text-bg-success' : '';
+  const roleClass = role === 'ADMIN' ? 'badge text-bg-success' : 'badge text-bg-primary';
 
   return (
     <>

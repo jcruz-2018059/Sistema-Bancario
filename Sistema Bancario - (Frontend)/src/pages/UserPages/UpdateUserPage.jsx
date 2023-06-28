@@ -90,12 +90,12 @@ export const UpdateUserPage = () => {
                                             <br />
                                             <div className="d-flex text-center align-items-center justify-content-center">
                                                 <div className="form-group">
-                                                    <Link to='/start/account'>
+                                                    <Link to='/start/users'>
                                                         <button onClick={() => updateUser()} className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Editar Cuenta</button>
                                                     </Link>
                                                 </div>
                                                 <div className="form-group">
-                                                    <Link to="/start/account">
+                                                    <Link to="/start/users">
                                                         <button className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#00043a', borderRadius: 100 }}>Cancelar</button>
                                                     </Link>
                                                 </div>

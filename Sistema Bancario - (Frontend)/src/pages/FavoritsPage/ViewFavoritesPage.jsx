@@ -1,4 +1,6 @@
 import React from 'react'
+import { FavoritesCard } from '../../components/Cards/FavoritesCard'
+import { Link } from 'react-router-dom'
 
 export const ViewFavoritesPage = () => {
     return (
@@ -10,6 +12,17 @@ export const ViewFavoritesPage = () => {
                         <p>Gestionar Favoritos</p>
                     </div>
                 </div>
+            
+
+            <div className='mb-5 d-flex justify-content-between'>
+                <Link to='add' className='ms-auto'>
+                    <button className='btn btn-primary rounded-0'>Agregar Favoritos</button>
+                </Link>
+            </div>
+
+            <div className='row g-0 justify-content-center'>
+                <FavoritesCard></FavoritesCard>
+            </div>
             </div>
         </>
     )

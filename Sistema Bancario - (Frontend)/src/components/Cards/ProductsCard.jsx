@@ -5,7 +5,8 @@ export const ProductsCard = ({ id, name, description, amount, onClick }) => {
   const role = localStorage.getItem('role')
   return (
     <>
-      <div className="card m-3 row g-0 rounded-0" style={{ maxWidth: '18rem', maxHeight: '24rem' }}>
+      <div className="card m-3 row g-0 rounded-0" style={{ maxWidth: '18rem', maxHeight: '40rem' }}>
+      <img src="\src\assets\productos.png" className="img-fluid" alt="..."/>
         <div className="card-header bg-primary text-white rounded-0">
           <h5 className="card-title mb-0">{name}</h5>
         </div>
@@ -28,7 +29,7 @@ export const ProductsCard = ({ id, name, description, amount, onClick }) => {
           }
           {
             role == 'CLIENT' ? (
-          <Link onClick={onClick} className="btn text-light m-2 rounded-0" style={{backgroundColor: '#F3940C'}}>Comprar</Link>
+          <Link  className="btn text-light m-2 rounded-0" style={{backgroundColor: '#F3940C'}}>Comprar</Link>
           ) : <></>
           }
 
