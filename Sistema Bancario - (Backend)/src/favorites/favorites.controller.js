@@ -10,14 +10,14 @@ exports.addFavorite = async(req,res)=>{
         let data = req.body; 
         let userLogged = req.user.sub;
 
-        let client = await User.findOne({_id: data.client});
-        if(!client) return res.status(404).send({message: 'Client not found'});
+        let client = await User.findOne({accountNumber: data.accountNumber});
+        if(!client & data.dpi != client.DPI) return res.status(404).send({message: 'Client not found'});
         let params ={
             client:  client,
             clientLogged: userLogged,
             alias: data.alias,
-            accountNumber: client.accountNumber,
-            dpi: client.DPI
+            accountNumber: data.accountNumber,
+            dpi: data.dpi
         };
         let favorites = new Favorites(params);
         await favorites.save();
@@ -31,7 +31,7 @@ exports.addFavorite = async(req,res)=>{
 
 exports.getFavorites = async(req,res)=>{
     try{
-        let favorites = await Favorites.find();
+        let favorites = await Favorites.find().populate('client');
         return res.send(favorites);
     }catch(err){
         console.error(err);
@@ -44,7 +44,7 @@ exports.getFavorite = async(req,res)=>{
         let favoriteID = req.params.id;
         let favorite = await Favorites.findOne({_id: favoriteID});
         if(!favorite) return res.status(404).send({message: 'Favorite not found'});
-        return res.send({favorite});
+        return res.send({message: 'Favorite found',favorite});
     }catch(err){
         console.error(err);
         return res.status(500).send({message: 'Error getting a Favorite', error: err.message});
@@ -68,14 +68,19 @@ exports.updateFavorite = async(req,res)=>{
         let data = req.body;
         let favoriteID = req.params.id;
         let userLogged = req.user.sub;
+        
+        if (!data.dpi) {
+            return res.status(400).send({ message: 'DPI is required' });
+          }
 
-        let client = await User.findOne({_id: data.client});
-        let params = {
-            client: client,
+        let client = await User.findOne({accountNumber: data.accountNumber});
+        if(!client & data.dpi != client.DPI) return res.status(404).send({message: 'Client not found'});
+        let params ={
+            client:  client,
             clientLogged: userLogged,
             alias: data.alias,
-            accountNumber: client.accountNumber,
-            dpi: client.DPI
+            accountNumber: data.accountNumber,
+            dpi: data.dpi
         };
         let favoriteUpdate = await Favorites.findOneAndUpdate(
             {_id: favoriteID},
