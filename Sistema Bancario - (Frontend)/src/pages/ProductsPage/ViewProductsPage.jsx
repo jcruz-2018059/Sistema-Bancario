@@ -1,4 +1,3 @@
-import React from 'react'
 import { ProductsCard } from '../../components/Cards/ProductsCard'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'

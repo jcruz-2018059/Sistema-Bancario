@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -7,7 +6,7 @@ import { Users } from '../../collections/Users';
 
 export const ViewUserPage = () => {
     const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role')
+    /* const role = localStorage.getItem('role') */
     const [user, setUsers] = useState([{}])
     const config = {
         headers: {
@@ -111,8 +110,8 @@ export const ViewUserPage = () => {
                                         <td>
                                             {
                                                 role != 'ADMIN' ? (
-                                                    <Link to='../movements'>
-                                                        <button className='btn text-light rounded-0' style={{ backgroundColor: '#00043a', marginRight: '30px' }}>Ver Historial</button>
+                                                    <Link to={`../movements/${_id}`}>
+                                                        <button className='btn text-light rounded-0 btn-sm' style={{ backgroundColor: '#00043a', marginRight: '30px' }}>Ver Historial</button>
                                                     </Link>
                                                 ) : <></>
                                             }

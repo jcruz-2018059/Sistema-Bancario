@@ -1,5 +1,5 @@
 import App from './App'
-import React, { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
@@ -27,6 +27,7 @@ import { AddFavoritesPage } from './pages/FavoritsPage/AddFavoritesPage';
 import { UpdateFavoritesPage } from './pages/FavoritsPage/UpdateFavoritesPage';
 import { MovementsPage } from './pages/MovementsPage/MovementsPage';
 import { ViewMovementsPage } from './pages/MovementsPage/ViewMovementsPage';
+import { ViewUserMovementsPage } from './pages/MovementsPage/ViewUserMovementsPage'
 import { AddMovementsPage } from './pages/MovementsPage/AddMovementsPage';
 import { UpdateMovementsPage } from './pages/MovementsPage/UpdateMovementsPage';
 import { AddAdminPage } from './pages/UserPages/AddAdminPage';
@@ -34,7 +35,7 @@ import { AddAdminPage } from './pages/UserPages/AddAdminPage';
 
 
 export const AuthContext = createContext();
-const role = localStorage.getItem('role')
+
 
 
 export const Index = () => {
@@ -178,6 +179,10 @@ export const Index = () => {
                                         {
                                             path: '',
                                             element: <ViewMovementsPage></ViewMovementsPage>
+                                        },
+                                        {
+                                            path: ':id',
+                                            element: <ViewUserMovementsPage></ViewUserMovementsPage>
                                         },
                                         {
                                             path: 'add',
