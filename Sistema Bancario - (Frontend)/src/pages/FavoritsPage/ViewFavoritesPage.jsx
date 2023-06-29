@@ -26,6 +26,38 @@ export const ViewFavoritesPage = () => {
             throw new Error('Error getting events');
         }
     }
+
+    const deleteFavorite = async (id) => {
+        try {
+          Swal.fire({
+            title: '¿Estás seguro de eliminar este Favorito?',
+            icon: 'warning',
+            showConfirmButton: false,
+            showDenyButton: true,
+            showCancelButton: true,
+            denyButtonText: `Sí, eliminar`,
+          }).then(async (result) => {
+            if (result.isDenied) {
+              const { data } = await axios.delete(`http://localhost:3200/favorite/deleteFavorite/${id}`, config);
+              console.log(data);
+              Swal.fire({
+                title: data.message || 'Favorito eliminado.',
+                icon: 'info',
+                timer: 4000
+              })
+              getFavorites()
+            }
+          })
+        } catch (err) {
+          console.error(err);
+          Swal.fire({
+            title: err.response.data.message || `Error eliminando Favorito :(`,
+            icon: 'error',
+            timer: 4000
+          })
+        }
+      }
+      
     useEffect(() => getFavorites, []);
     return (
         <>
@@ -56,6 +88,7 @@ export const ViewFavoritesPage = () => {
                                     alias={alias}
                                     accountNumber={accountNumber}
                                     dpi={dpi}
+                                    onClick={() => deleteFavorite(_id)}
                                     >
                                 </FavoritesCard>
                             )

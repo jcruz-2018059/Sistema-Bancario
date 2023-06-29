@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const FavoritesCard = ({ id, name, surname, alias, accountNumber, dpi}) => {
+export const FavoritesCard = ({ id, name, surname, alias, accountNumber, dpi, onClick}) => {
     const role = localStorage.getItem('role')
     return (
         <>
@@ -22,7 +22,7 @@ export const FavoritesCard = ({ id, name, surname, alias, accountNumber, dpi}) =
 
                     <Link to={`update/${id}`} className="btn btn-primary m-2 rounded-0">Editar</Link>
 
-                    <Link className="btn btn-danger m-2 rounded-0">Eliminar</Link>
+                    <Link onClick={onClick} className="btn btn-danger m-2 rounded-0">Eliminar</Link>
 
                     <Link className="btn text-light m-2 rounded-0" style={{ backgroundColor: '#F3940C' }}>Transferir</Link>
 
