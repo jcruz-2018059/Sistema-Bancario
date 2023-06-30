@@ -29,7 +29,7 @@ export const ProductsCard = ({ id, name, description, amount, onClick }) => {
           }
           {
             role == 'CLIENT' ? (
-          <Link  className="btn text-light m-2 rounded-0" style={{backgroundColor: '#F3940C'}}>Comprar</Link>
+          <Link to={`buy/${id}`} className="btn text-light m-2 rounded-0" style={{backgroundColor: '#F3940C'}}>Comprar</Link>
           ) : <></>
           }
 

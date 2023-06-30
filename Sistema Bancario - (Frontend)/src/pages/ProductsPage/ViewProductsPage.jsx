@@ -25,15 +25,7 @@ export const ViewProductsPage = () => {
       throw new Error('Error getting events');
     }
   }
-
-  const buyService = async () =>{
-    try{
-
-    }catch(err){
-      
-    }
-  }
-
+  
   const deleteProduct = async (id) => {
     try {
       Swal.fire({

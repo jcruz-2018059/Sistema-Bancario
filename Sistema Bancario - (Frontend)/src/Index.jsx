@@ -32,6 +32,7 @@ import { ViewHistoryPage } from './pages/MovementsPage/ViewHistoryPage';
 import { AddMovementsPage } from './pages/MovementsPage/AddMovementsPage';
 import { UpdateMovementsPage } from './pages/MovementsPage/UpdateMovementsPage';
 import { AddAdminPage } from './pages/UserPages/AddAdminPage';
+import { BuyProductPage } from './pages/ProductsPage/BuyProductPage';
 
 
 
@@ -148,6 +149,10 @@ export const Index = () => {
                                         {
                                             path: 'add',
                                             element: <AddProductsPage></AddProductsPage>
+                                        },
+                                        {
+                                            path: 'buy/:id',
+                                            element: <BuyProductPage></BuyProductPage>
                                         },
                                         {
                                             path: 'update/:id',
