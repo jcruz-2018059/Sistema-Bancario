@@ -26,6 +26,14 @@ export const ViewProductsPage = () => {
     }
   }
 
+  const buyService = async () =>{
+    try{
+
+    }catch(err){
+      
+    }
+  }
+
   const deleteProduct = async (id) => {
     try {
       Swal.fire({
