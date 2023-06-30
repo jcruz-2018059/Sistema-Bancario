@@ -15,7 +15,7 @@ api.post('/add', [ensureAuth, isAdmin, save, saveValidation], userController.add
 api.get('/get', [ensureAuth, isAdmin], userController.get);
 api.put('/update/:id', [ensureAuth, isAdmin, save, saveValidation], userController.update);
 api.delete('/delete/:id', [ensureAuth, isAdmin], userController.delete);
-api.get('/movement/get', [ensureAuth, isAdmin], userController.getByMovements);
+api.post('/movement/get', [ensureAuth, isAdmin], userController.getByMovements);
 
 //Funciones de CLIENT
 api.put('/update', [ensureAuth, isClient, save, saveValidation], userController.updateClient);

@@ -23,12 +23,22 @@ export const MenuPage = () => {
               </li>
               {
                 role == 'ADMIN' ? (
+                  <>
                   <li className="nav-item">
                     <Link to='users' className="nav-link text-white" aria-current="page">
                       <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home" /></svg>
                       Usuarios
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link to='movements' className="nav-link text-white" aria-current="page">
+                      <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home" /></svg>
+                      Movimientos
+                    </Link>
+                  </li>
+                  </>
+                  
+                  
                 ) : <></>
               }
               {
