@@ -31,9 +31,11 @@ export const MovementsCard = ({type, userOrigin, userDestination, amount, descri
                             <p className="mb-1">
                                 <strong>Servicio:</strong> {service}
                             </p>
-                        ) : <p className="mb-1">
+                        ) : description != '' ? (
+                            <p className="mb-1">
                                 <strong>Descripción:</strong> {description}
                             </p>
+                        ) : <></>
                     }
                     <p className="mb-1">
                         <strong>Fecha:</strong> {new Date(date).toLocaleDateString()}

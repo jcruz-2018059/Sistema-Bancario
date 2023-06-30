@@ -131,6 +131,11 @@ exports.getLast5 = async(req, res)=>{
             .populate('service')
             .sort({date: 'desc'})
             .limit(5);
+        movements.forEach(movement => {
+            if (movement.type === 'TRANSFER' && movement.userDestination._id.toString() === user) {
+                movement.type = 'CREDIT';
+            }
+        });
         let userName = await User.findOne({_id: user}).select('name surname');
         return res.send({message: 'Movements found: ', movements, userName});
     }catch(err){

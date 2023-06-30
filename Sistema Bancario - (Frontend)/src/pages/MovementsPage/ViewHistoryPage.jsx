@@ -34,7 +34,7 @@ export const ViewHistoryPage = () => {
                 </div>
 
                 <div className='mb-5 d-flex justify-content-between'>
-                    <Link to='add' className='ms-auto'>
+                    <Link to='../transfer' className='ms-auto'>
                         <button className='btn btn-primary rounded-0'>Hacer Transferencia</button>
                     </Link>
                 </div>
@@ -45,13 +45,14 @@ export const ViewHistoryPage = () => {
                             const originName = userOrigin ? userOrigin.name + ' ' + userOrigin.surname : '';
                             const destinationName = userDestination ? userDestination.name + ' ' + userDestination.surname  : '';
                             const serviceName = service ? service.name : '';
+                            const desc = description ? description : '';
                             return(
                                 <MovementsCard key={index}
                                     type={type}
                                     userOrigin={originName}
                                     userDestination={destinationName}
                                     amount={amount}
-                                    description={description}
+                                    description={desc}
                                     service={serviceName}
                                     date={date}
                                 ></MovementsCard>
