@@ -110,6 +110,11 @@ exports.get = async(req, res)=>{
             .populate('userOrigin', ['name', 'surname', 'accountNumber', 'DPI'])
             .populate('userDestination', ['name', 'surname', 'accountNumber'])
             .populate('service');
+        movements.forEach(movement => {
+            if (movement.type === 'TRANSFER' && movement.userDestination._id.toString() === user) {
+                movement.type = 'CREDIT';
+            }
+        });
         return res.send({message: 'Movements found: ', movements});
     }catch(err){
         console.error(err);
@@ -126,7 +131,8 @@ exports.getLast5 = async(req, res)=>{
             .populate('service')
             .sort({date: 'desc'})
             .limit(5);
-        return res.send({message: 'Movements found: ', movements});
+        let userName = await User.findOne({_id: user}).select('name surname');
+        return res.send({message: 'Movements found: ', movements, userName});
     }catch(err){
         console.error(err);
         return res.status(500).send({message: 'Error getting movements.', error: err.message});

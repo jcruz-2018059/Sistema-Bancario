@@ -51,6 +51,7 @@ exports.login = async(req, res)=>{
         if(user && await checkPassword(data.password, user.password)){
             let token = await createToken(user);
             let userLogged = {
+                id: user._id,
                 username: user.username,
                 name: user.name,
                 role: user.role
@@ -122,16 +123,16 @@ exports.add = async(req, res)=>{
 
 exports.get = async (req, res) => {
     try {
-      let users = await User.find();
-      const adminUsers = users.filter(user => user.role === 'ADMIN');
-      const otherUsers = users.filter(user => user.role !== 'ADMIN');
-      const sortedUsers = adminUsers.concat(otherUsers);
-      return res.send({ message: 'Users found:', users: sortedUsers });
+        let users = await User.find();
+        const adminUsers = users.filter(user => user.role === 'ADMIN');
+        const otherUsers = users.filter(user => user.role !== 'ADMIN');
+        const sortedUsers = adminUsers.concat(otherUsers);
+        return res.send({ message: 'Users found:', users: sortedUsers });
     } catch (err) {
-      console.error(err);
-      return res.status(500).send({ message: 'Error getting users.' });
+        console.error(err);
+        return res.status(500).send({ message: 'Error getting users.' });
     }
-  };
+};
 
 exports.getByMovements = async(req, res)=>{
     try{
@@ -247,7 +248,7 @@ exports.updateClient = async(req, res)=>{
 
 exports.getByLogin = async(req, res)=>{
     try{
-        let id = req.user.sub
+        let id = req.user.sub;
         let users = await User.findOne({_id:id});
         return res.send({message: 'User found: ', users});
     }catch(err){
@@ -258,7 +259,7 @@ exports.getByLogin = async(req, res)=>{
 
 exports.getById = async(req, res)=>{
     try{
-        let id = req.params.id
+        let id = req.params.id;
         let users = await User.findOne({_id:id});
         return res.send({message: 'User found: ', users});
     }catch(err){

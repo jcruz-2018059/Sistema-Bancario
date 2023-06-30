@@ -33,6 +33,7 @@ export const LoginPage = () => {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("role", data.userLogged.role);
                 localStorage.setItem('name', data.userLogged.name);
+                localStorage.setItem('id', data.userLogged.id);
                 setDataUser({
                     name: data.userLogged.name,
                     username: data.userLogged.username,

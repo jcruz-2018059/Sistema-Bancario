@@ -28,6 +28,7 @@ import { UpdateFavoritesPage } from './pages/FavoritsPage/UpdateFavoritesPage';
 import { MovementsPage } from './pages/MovementsPage/MovementsPage';
 import { ViewMovementsPage } from './pages/MovementsPage/ViewMovementsPage';
 import { ViewUserMovementsPage } from './pages/MovementsPage/ViewUserMovementsPage'
+import { ViewHistoryPage } from './pages/MovementsPage/ViewHistoryPage';
 import { AddMovementsPage } from './pages/MovementsPage/AddMovementsPage';
 import { UpdateMovementsPage } from './pages/MovementsPage/UpdateMovementsPage';
 import { AddAdminPage } from './pages/UserPages/AddAdminPage';
@@ -183,6 +184,10 @@ export const Index = () => {
                                         {
                                             path: ':id',
                                             element: <ViewUserMovementsPage></ViewUserMovementsPage>
+                                        },
+                                        {
+                                            path: 'history',
+                                            element: <ViewHistoryPage></ViewHistoryPage>
                                         },
                                         {
                                             path: 'add',

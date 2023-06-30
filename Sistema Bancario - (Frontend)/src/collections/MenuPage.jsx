@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom'
 import { Nabvar } from '../components/Navbar'
 
 export const MenuPage = () => {
-  const role = localStorage.getItem('role')
+  const role = localStorage.getItem('role');
   return (
     <>
       <div className=' vh-100'>
@@ -54,9 +54,9 @@ export const MenuPage = () => {
               {
                 role == 'CLIENT' ? (
                   <li>
-                    <Link to='movements' className="nav-link text-white">
+                    <Link to='movements/history' className="nav-link text-white">
                       <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table" /></svg>
-                      Movimientos
+                      Historial
                     </Link>
                   </li>
                 ) : <></>
