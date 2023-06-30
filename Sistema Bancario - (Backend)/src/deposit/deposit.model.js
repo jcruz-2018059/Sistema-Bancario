@@ -1,20 +1,12 @@
 const mongoose = require('mongoose');
 
 const depositSchema = mongoose.Schema({
-    clientOrigin:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'User',
-    },
-    NoAccountOrigin:{
-        type: Number,
-        required: true,
-    },
     clientDestiny:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    NoAccountDestiny:{
+    noAccountDestiny:{
         type: Number,
         required: true
     },

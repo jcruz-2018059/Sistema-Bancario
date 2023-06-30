@@ -16,6 +16,7 @@ const userRoutes = require('../src/user/user.routes');
 const serviceRoutes = require('../src/service/service.routes');
 const favoriteRoutes = require('../src/favorites/favorites.routes');
 //Rutas de deposit
+const depositRoutes = require('../src/deposit/deposit.routes');
 //Rutas de favorites
 //Rutas de movement
 //Rutas de service
@@ -30,6 +31,7 @@ app.use(morgan('dev'));
 //Rutas de cada colección 
 app.use('/user', userRoutes);
 //Rutas de colecciónv deposit
+app.use('/deposit', depositRoutes);
 //Rutas de colección favorites
 app.use('/favorite', favoriteRoutes);
 //Rutas de colección movement
