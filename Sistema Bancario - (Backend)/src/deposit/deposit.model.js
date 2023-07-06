@@ -10,6 +10,10 @@ const depositSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    DPI:{
+        type: Number,
+        required: true
+    },
     amount: {
         type: Number,
         required: true
@@ -22,7 +26,12 @@ const depositSchema = mongoose.Schema({
         type: Date,
         required: true,
         default: Date()
-    }
+    },
+    exp:{
+        type: Date,
+        required: true,
+        default: Date()
+    },
 },{
     versionKey: false
 });

@@ -9,29 +9,25 @@ exports.test = (req,res)=>{
 exports.add = async(req,res)=>{
     try{
         let data = req.body;
-        let clientDestiny = await User.findOne({_id: data.client});
+        let clientDestiny = await User.findOne({accountNumber: data.noAccountDestiny});
 
-        if(!clientDestiny) return res.status(404).send({message: 'Cliente no encontrado'});
+        if(!clientDestiny & data.DPI != clientDestiny.DPI) return res.status(404).send({message: 'Cliente no encontrado'});
         let params = {
             clientDestiny: clientDestiny,
-            noAccountDestiny: clientDestiny.accountNumber,
+            noAccountDestiny: data.noAccountDestiny,
+            DPI : data.DPI,
             amount: data.amount,
             description: data.description,
-            date: Math.floor(Date.now()/ 1000),
-            exp: Math.floor(Date.now() / 1000) + 60
+            date: new Date(Date.now()).getTime(),
+            exp: new Date(Date.now()).getTime() + 60
         };
         let deposit = new Deposit(params);
         await deposit.save();
 
-        let clientBalance = clientDestiny.balance + params.amount;
+        clientDestiny.balance += parseFloat(data.amount)
+        await clientDestiny.save();
 
-        let updateUser = await User.findOneAndUpdate(
-            {_id: clientDestiny},
-            clientBalance,
-            {new: true}
-        );
-        if(!updateUser) return res.status(404).send({message: 'Client not Updated'});
-        return res.send({message: 'Deposit made correctly and balance user Updated', deposit});
+        return res.send({message: 'Deposit made correctly and balance user Updated'});
 
     }catch(err){
         console.error(err);
@@ -91,47 +87,50 @@ exports.updateDeposit = async(req,res)=>{
 };
 
 
-exports.reverseDeposit = async(req,res)=>{
+exports.reverseDeposit = async (req, res) => {
+    try {
+      const data = req.body;
+      const deposit = await Deposit.findOne({ _id: data.ID });
+      const client = await User.findOne({ _id: deposit.clientDestiny });
+      if (!deposit) {
+        return res.status(404).send({ message: 'Deposit not found' });
+      }
+      const newBalance = client.balance - deposit.amount;
+  
+      const clientUpdated = await User.findOneAndUpdate(
+        { _id: client._id },
+        { balance: newBalance },
+        { new: true }
+      );
+      if (!clientUpdated) {
+        return res.status(500).send({ message: 'Client not updated' });
+      }
+  
+      deposit.amount = 0;
+      deposit.description = 'DEPOSIT REVERSED';
+  
+      const depositReversed = await deposit.save();
+      if (!depositReversed) {
+        return res.status(500).send({ message: 'Deposit not updated' });
+      }
+  
+      return res.send({
+        message: 'Deposit reversed successfully',
+        deposit: depositReversed,
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send({ message: 'Error reversing deposit', error: err.message });
+    }
+  };
+
+exports.allDeposit = async(req,res)=>{
     try{
-        let depositID = req.params.id;
-        let deposit = await Deposit.findOne({_id: depositID});
-        let client = await User.findOne({_id: deposit.clientDestiny});
-
-        if(!deposit) return res.status(404).send({message: 'Deposit not found'});
-
-        let data = {
-            amount: 0,
-            description: 'DEPOSIT REVERSED'
-        };
-
-        if(Math.floor(Date.now() / 1000) >= deposit.exp){
-            return res.status(401).send({message: 'You can no longer revert after one minute'});
-        };
-
-        let newBalance = client.balance - deposit.amount;
-
-        let cli = {
-            balance: newBalance
-        }
-
-        let clientUpdated = await User.findOneAndUpdate(
-            {_id: client},
-            cli,
-            {new: true}
-        );
-        if(!clientUpdated) return res.status(500).send({message: 'Client not Updated,  not found'});
-        let depositReverse = await Deposit.findOneAndUpdate(
-            {_id: deposit},
-            data,
-            {new: true}
-        );
-        if(!depositReverse) return res.status(500).send({message: 'Deposit not Updated'});
-
-        return res.send({message: 'Deposit revesed Successfully', depositReverse});
-
-
+        let desposits = await Deposit.find({}).populate('clientDestiny');
+        if(!desposits) return res.status(404).send({message: 'You have no deposit made'});
+        return res.send(desposits);
     }catch(err){
         console.error(err);
-        return res.status(404).send({message: 'Error reverse Deposit', error: err.message});
+        return res.status(500).send({message: 'Error getting deposits'});
     }
-}
+};

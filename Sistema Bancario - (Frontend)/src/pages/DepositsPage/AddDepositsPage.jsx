@@ -29,13 +29,12 @@ export const AddDepositsPage = () => {
   const AddDeposit = async () => {
     try {
       let deposit = {
-        destination: document.getElementById('destination').value,
+        noAccountDestiny: document.getElementById('destination').value,
         DPI: document.getElementById('DPI').value,
         amount: document.getElementById('amount').value,
         description: document.getElementById('description').value,
-        date_hour: document.getElementById('date_hour').value,
       }
-      const { data } = await axios.post('http://localhost:2651/deposit/add', deposit, config)
+      const { data } = await axios.post('http://localhost:3200/deposit/add', deposit, config)
       Swal.fire({
         title: data.message || 'Deposito Agregado',
         icon: 'success',
@@ -65,16 +64,16 @@ export const AddDepositsPage = () => {
           <form>
             <div className="form-group">
               <label htmlFor="inputTelefono">Cuenta Destino</label>
-              <input type="text" style={{ borderColor: '#00043a', borderWidth: 4, borderRadius: 100 }} className="border-primary form-control" id="destination" placeholder="destination" />
+              <input type="number" style={{ borderColor: '#00043a', borderWidth: 4, borderRadius: 100 }} className="border-primary form-control" id="destination" placeholder="destination" />
             </div>
             <div className="row">
               <div className="form-group col-md-6">
                 <label htmlFor="inputDireccion">DPI</label>
-                <input type="text" style={{ borderColor: '#00043a', borderWidth: 4, borderRadius: 100 }} className="border-primary form-control" id="DPI" placeholder="DPI" />
+                <input type="number" style={{ borderColor: '#00043a', borderWidth: 4, borderRadius: 100 }} className="border-primary form-control" id="DPI" placeholder="DPI" />
               </div>
               <div className="form-group col-md-6">
                 <label htmlFor="inputCiudad">Monto</label>
-                <input type="text" style={{ borderColor: '#00043a', borderWidth: 4, borderRadius: 100 }} className="border-primary form-control" id="amount" placeholder="amount" />
+                <input type="number" style={{ borderColor: '#00043a', borderWidth: 4, borderRadius: 100 }} className="border-primary form-control" id="amount" placeholder="amount" />
               </div>
             </div>
             <div className="form-group">
