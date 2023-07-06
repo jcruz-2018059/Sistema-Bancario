@@ -29,8 +29,7 @@ import { MovementsPage } from './pages/MovementsPage/MovementsPage';
 import { ViewMovementsPage } from './pages/MovementsPage/ViewMovementsPage';
 import { ViewUserMovementsPage } from './pages/MovementsPage/ViewUserMovementsPage'
 import { ViewHistoryPage } from './pages/MovementsPage/ViewHistoryPage';
-import { AddMovementsPage } from './pages/MovementsPage/AddMovementsPage';
-import { UpdateMovementsPage } from './pages/MovementsPage/UpdateMovementsPage';
+import { TransferPage } from './pages/MovementsPage/TransferPage';
 import { AddAdminPage } from './pages/UserPages/AddAdminPage';
 import { BuyProductPage } from './pages/ProductsPage/BuyProductPage';
 
@@ -195,12 +194,8 @@ export const Index = () => {
                                             element: <ViewHistoryPage></ViewHistoryPage>
                                         },
                                         {
-                                            path: 'add',
-                                            element: <AddMovementsPage></AddMovementsPage>
-                                        },
-                                        {
-                                            path: 'update/:id',
-                                            element: <UpdateMovementsPage></UpdateMovementsPage>
+                                            path: 'transfer',
+                                            element: <TransferPage></TransferPage>
                                         }
                                     ]
                                 }

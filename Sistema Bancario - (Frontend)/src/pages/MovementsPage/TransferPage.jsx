@@ -1,7 +1,44 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-export const AddMovementsPage = () => {
+export const TransferPage = () => {
+    const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+    const config = {
+        headers: {
+        Authorization: `${token}`
+        }
+    }
+    const transfer = async () => {
+        try {
+          let transfer = {
+            amount: document.getElementById('amount').value,
+            userDestination: document.getElementById('userDestination').value,
+            userDestinationDPI: document.getElementById('userDestinationDPI').value
+          }
+          if(document.getElementById('description').value.lenght != 0 || document.getElementById('description').value.lenght != ''){
+            transfer.description = document.getElementById('description').value
+          }
+          const { data } = await axios.post('http://localhost:3200/movement/transfer', transfer, config);
+          Swal.fire({
+            title: data.message || '¡Transacción exitosa!',
+            icon: 'success',
+            timer: 4000
+          })
+          navigate('../history')
+        } catch (err) {
+          console.log(err)
+          Swal.fire({
+            title: err.response.data.message || `Error haciendo transferencia :(`,
+            icon: 'error',
+            timer: 4000
+          })
+        }
+      }
   return (
     <>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -37,12 +74,12 @@ export const AddMovementsPage = () => {
                                             <br />
                                             <div className="d-flex text-center align-items-center justify-content-center">
                                                 <div className="form-group">
-                                                    <Link to='/start/movements'>
-                                                        <button  className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Transferir</button>
+                                                    <Link to="/start/movements/history">
+                                                        <button onClick={(e) => { transfer(), e.preventDefault() }} className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Transferir</button>
                                                     </Link>
                                                 </div>
                                                 <div className="form-group">
-                                                    <Link to="/start/movements">
+                                                    <Link to="/start/movements/history">
                                                         <button className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#00043a', borderRadius: 100 }}>Cancelar</button>
                                                     </Link>
                                                 </div>

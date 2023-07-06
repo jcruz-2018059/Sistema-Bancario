@@ -95,7 +95,7 @@ export const AccountPage = () => {
                                                 {
                                                 role != 'ADMIN' ? (
                                                 <div className="form-group col-md-6">
-                                                    <Link to='../movements'>
+                                                    <Link to='../movements/history'>
                                                         <button className="btn text-light" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Ver Historial</button>
                                                     </Link>
                                                 </div>

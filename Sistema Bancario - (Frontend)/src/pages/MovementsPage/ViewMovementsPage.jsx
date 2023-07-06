@@ -67,7 +67,7 @@ export const ViewMovementsPage = () => {
                                 return (
                                     <tr className="text-dark" key={index}>
                                         <Users
-                                            number={index}
+                                            number={index+1}
                                             name={name}
                                             surname={surname}
                                             accountNumber={accountNumber}
