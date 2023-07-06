@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const DepositsCard = ({ id, name, surname, cuenta, amount, description, date, expirationDate, onClick }) => {
+export const DepositsCard = ({ id, name, surname, cuenta, amount, description, date, onClick }) => {
   const currentTime = new Date().getTime();
   const depositTime = new Date(date).getTime();
   const elapsedTimeInSeconds = (currentTime - depositTime) / 1000; // Convertir a segundos
 
   const shouldShowRevertButton = elapsedTimeInSeconds < 60 && description !== 'DEPOSIT REVERSED';
+  const roleClass = description === 'DEPOSIT REVERSED' ? 'badge text-bg-danger' : '';
 
   return (
     <>
@@ -25,7 +26,7 @@ export const DepositsCard = ({ id, name, surname, cuenta, amount, description, d
             <strong>Monto:</strong> Q{amount}.00
           </p>
           <p className="mb-1">
-            <strong>Descripción:</strong> {description}
+            <strong>Descripción:</strong> <span className={roleClass}>{description}</span>
           </p>
           <p className="mb-1">
             <strong>Fecha:</strong> {new Date(date).toLocaleDateString()}
