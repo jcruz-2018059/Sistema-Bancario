@@ -48,7 +48,7 @@ export const AddUserPage = () => {
     }
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 30}}>
                 <div className="container px-5 ">
 
                     <div className="bg-light rounded-4 py-5 px-4 px-md-5">
@@ -63,12 +63,12 @@ export const AddUserPage = () => {
                                 <form id="contactForm">
 
                                     <div className="form-group">
-                                        <label htmlFor="inputName">Name</label>
-                                        <input type="text" className="form-control" placeholder="Name" id="name" style={{ borderColor: '#00043a', borderWidth: 4 }} />
+                                        <label htmlFor="inputName">Nombre</label>
+                                        <input type="text" className="form-control" placeholder="Nombre" id="name" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="inputSurname">Surname</label>
-                                        <input type="text" className="form-control" placeholder="Surname" id="surname" style={{ borderColor: '#00043a', borderWidth: 4 }} />
+                                        <label htmlFor="inputSurname">Apellido</label>
+                                        <input type="text" className="form-control" placeholder="Apellido" id="surname" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputUsername">Username</label>

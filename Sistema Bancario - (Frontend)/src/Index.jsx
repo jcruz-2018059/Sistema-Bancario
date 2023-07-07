@@ -13,7 +13,6 @@ import { WelcomePage } from './pages/HomePage/WelcomePage';
 import { DepositsPage } from './pages/DepositsPage/DepositsPage';
 import { ViewDepositsPage } from './pages/DepositsPage/ViewDepositsPage';
 import { AddDepositsPage } from './pages/DepositsPage/AddDepositsPage';
-import { UpdateDepositsPage } from './pages/DepositsPage/UpdateDepositsPage';
 import { ViewUserPage } from './pages/UserPages/ViewUserPage';
 import { AddUserPage } from './pages/UserPages/AddUserPage';
 import { UpdateUserPage } from './pages/UserPages/UpdateUserPage';
@@ -130,10 +129,6 @@ export const Index = () => {
                                         {
                                             path: 'add',
                                             element: <AddDepositsPage></AddDepositsPage>
-                                        },
-                                        {
-                                            path: 'update/:id',
-                                            element: <UpdateDepositsPage></UpdateDepositsPage>
                                         }
                                     ]
                                 },

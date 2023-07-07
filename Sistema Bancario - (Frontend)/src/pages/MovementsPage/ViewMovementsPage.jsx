@@ -32,8 +32,9 @@ export const ViewMovementsPage = () => {
     useEffect(() => {getUsers(sort)}, [sort]);
     return (
         <>
-            <div className='container'>
-                <div className="container-fluid text-white text-center" style={{ marginTop: '10%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
+        <div className='vh-100'>
+        <div className='container'>
+                <div className="container-fluid text-white text-center" style={{ marginTop: '8%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
                     <div className="container py-4">
                         <h1 className="mb-1">Movimientos</h1>
                         <p>Gestión de movimientos</p>
@@ -80,6 +81,7 @@ export const ViewMovementsPage = () => {
                     </tbody>
                 </table>
             </div>
+        </div>
         </>
     )
 }

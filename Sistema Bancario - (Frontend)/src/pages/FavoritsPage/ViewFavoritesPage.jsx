@@ -61,8 +61,9 @@ export const ViewFavoritesPage = () => {
     useEffect(() => getFavorites, []);
     return (
         <>
-            <div className='container'>
-                <div className="container-fluid text-white text-center" style={{ marginTop: '10%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
+        <div className='vh-100'>
+        <div className='container'>
+                <div className="container-fluid text-white text-center" style={{ marginTop: '8%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
                     <div className="container py-4">
                         <h1 className="mb-1">Ver Favoritos</h1>
                         <p>Gestionar Favoritos</p>
@@ -70,14 +71,21 @@ export const ViewFavoritesPage = () => {
                 </div>
 
 
-                <div className='mb-5 d-flex justify-content-between'>
+                <div className='mb-1 d-flex justify-content-between'>
                     <Link to='add' className='ms-auto'>
-                        <button className='btn btn-primary rounded-0'>Agregar Favoritos</button>
+                        <button className='btn btn-primary rounded-0'>Nuevo Favorito</button>
                     </Link>
                 </div>
 
                 <div className='row g-0 justify-content-center'>
                     {
+                        favorite.length === 0 ? (
+                            <>
+                            <div className='container justify-content-center align-items-center' style={{borderColor: 'red', height: 300, display: 'flex'}}>
+                              <p className='fw-bold'  style={{color: '#a6a6a6'}} >Aún no tienes usuarios favoritos.</p>
+                            </div>
+                            </>
+                          ) : 
                         favorite.map(({ _id, client: {name: clientName} = {}, client: {surname: clientSurname} = {}, alias, accountNumber, dpi }, i) => {
                             return (
                                 <FavoritesCard
@@ -96,6 +104,7 @@ export const ViewFavoritesPage = () => {
                     }
                 </div>
             </div>
+        </div>
         </>
     )
 }
