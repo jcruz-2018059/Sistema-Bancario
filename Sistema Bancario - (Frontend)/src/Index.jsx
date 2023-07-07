@@ -32,6 +32,7 @@ import { ViewHistoryPage } from './pages/MovementsPage/ViewHistoryPage';
 import { TransferPage } from './pages/MovementsPage/TransferPage';
 import { AddAdminPage } from './pages/UserPages/AddAdminPage';
 import { BuyProductPage } from './pages/ProductsPage/BuyProductPage';
+import { TransferFavorite } from './pages/MovementsPage/TransferFavorite';
 
 
 
@@ -175,6 +176,10 @@ export const Index = () => {
                                             path: 'update/:id',
                                             element: <UpdateFavoritesPage></UpdateFavoritesPage>
                                         },
+                                        {
+                                            path: 'transfer/:id',
+                                            element: <TransferFavorite></TransferFavorite>
+                                        }
                                     ]
                                 },
                                 {

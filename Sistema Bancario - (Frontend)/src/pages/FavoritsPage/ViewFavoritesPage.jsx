@@ -7,7 +7,6 @@ import Swal from 'sweetalert2';
 
 export const ViewFavoritesPage = () => {
     const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role')
     const [favorite, setFavorites] = useState([{}])
     const config = {
         headers: {
@@ -78,7 +77,7 @@ export const ViewFavoritesPage = () => {
 
                 <div className='row g-0 justify-content-center'>
                     {
-                        favorite.map(({ _id, client: {name: clientName} = {}, client: {surname: clientSurname} = {}, alias, accountNumber, dpi }, i) => {
+                        favorite.map(({ _id, client: {name: clientName, _id: clientId, surname: clientSurname} = {}, alias, accountNumber, dpi }, i) => {
                             return (
                                 <FavoritesCard
                                     key={i}
@@ -88,6 +87,7 @@ export const ViewFavoritesPage = () => {
                                     alias={alias}
                                     accountNumber={accountNumber}
                                     dpi={dpi}
+                                    clientId ={clientId}
                                     onClick={() => deleteFavorite(_id)}
                                     >
                                 </FavoritesCard>
