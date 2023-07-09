@@ -45,7 +45,7 @@ export const TransferFavorite = () => {
             icon: 'success',
             timer: 4000
           })
-          navigate('../favorites')
+          navigate('/start/favorites')
         } catch (err) {
           console.log(err)
           Swal.fire({
@@ -91,7 +91,7 @@ export const TransferFavorite = () => {
                                             <br />
                                             <div className="d-flex text-center align-items-center justify-content-center">
                                                 <div className="form-group">
-                                                    <Link to="/start/movements/history">
+                                                    <Link to="/start/favorites">
                                                         <button onClick={(e) => { transfer(), e.preventDefault() }} className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Transferir</button>
                                                     </Link>
                                                 </div>
