@@ -72,7 +72,7 @@ export const LoginPage = () => {
                         </div>
 
                         <form>
-                            <p>Agregue sus datos</p>
+                            <p>Ingresa tus datos</p>
 
                             <div className="form-outline mb-4">
                                 <label className="form-label" htmlFor="form2Example11">Usuario</label>
@@ -86,13 +86,6 @@ export const LoginPage = () => {
 
                             <div className="text-center pt-1 mb-5 row">
                                 <button onClick={(e)=> login(e)} className="btn btn-primary col rounded-0" type="button">Iniciar sesión</button>
-                            </div>
-
-                            <div className="d-flex align-items-center justify-content-center pb-4">
-                                <p className="mb-0 me-2">¿No tienes una cuenta?</p>
-                                <Link to=''>
-                                    <button type="button" className="btn btn-outline-primary rounded-0">Registrarse</button>
-                                </Link>
                             </div>
                         </form>
                     </div>

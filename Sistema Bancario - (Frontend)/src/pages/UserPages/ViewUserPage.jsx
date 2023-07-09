@@ -60,8 +60,9 @@ export const ViewUserPage = () => {
     useEffect(() => getUsers, []);
     return (
         <>
-            <div className='container'>
-                <div className="container-fluid text-white text-center" style={{ marginTop: '10%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
+        <div className='vh-100'>
+        <div className='container'>
+                <div className="container-fluid text-white text-center" style={{ marginTop: '8%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
                     <div className="container py-4">
                         <h1 className="mb-1">Ver Usuarios</h1>
                         <p>Gestionar Usuarios</p>
@@ -69,12 +70,12 @@ export const ViewUserPage = () => {
                 </div>
             </div>
             <div className="container">
-                <div className='mb-5 d-flex justify-content-between'>
+                <div className='mb-3 d-flex justify-content-between'>
                     <Link to='add'>
-                        <button className='btn text-light' style={{ backgroundColor: '#F3940C' }}>Agregar Cliente</button>
+                        <button className='btn btn-primary text-light'>Agregar Cliente</button>
                     </Link>
                     <Link to='addAdmin'>
-                        <button className='btn text-light' style={{ backgroundColor: '#F3940C' }}>Agregar Administrador</button>
+                        <button className='btn btn-primary text-light'>Agregar Administrador</button>
                     </Link>
                 </div>
                 <table className="table">
@@ -83,10 +84,10 @@ export const ViewUserPage = () => {
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">DPI</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Balance</th>
-                            <th scope="col">Role</th>
+                            <th scope="col">No. Teléfono</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Saldo</th>
+                            <th scope="col">Rol</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -111,7 +112,7 @@ export const ViewUserPage = () => {
                                             {
                                                 role != 'ADMIN' ? (
                                                     <Link to={`../movements/${_id}`}>
-                                                        <button className='btn text-light rounded-0 btn-sm' style={{ backgroundColor: '#00043a', marginRight: '30px' }}>Ver Historial</button>
+                                                        <button className='btn text-light btn-sm' style={{ backgroundColor: '#00043a', marginRight: '30px'}}>Ver Historial</button>
                                                     </Link>
                                                 ) : <></>
                                             }
@@ -143,6 +144,8 @@ export const ViewUserPage = () => {
                     </tbody>
                 </table>
             </div>
+        </div>
+            
         </>
     )
 }

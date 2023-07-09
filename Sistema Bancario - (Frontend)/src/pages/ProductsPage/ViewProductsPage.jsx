@@ -60,8 +60,9 @@ export const ViewProductsPage = () => {
   useEffect(() => getServices, []);
   return (
     <>
-      <div className='container'>
-        <div className="container-fluid text-white text-center" style={{ marginTop: '10%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
+    <div className='vh-100'>
+    <div className='container'>
+        <div className="container-fluid text-white text-center" style={{ marginTop: '8%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
           <div className="container py-4">
             <h1 className="mb-1">Productos</h1>
             <p>Gestionar productos</p>
@@ -70,7 +71,7 @@ export const ViewProductsPage = () => {
 
         {
           role == 'ADMIN' ? (
-            <div className='mb-5 d-flex justify-content-between'>
+            <div className='mb-1 d-flex justify-content-between'>
               <Link to='add' className='ms-auto'>
                 <button className='btn btn-primary rounded-0'>Agregar Productos</button>
               </Link>
@@ -79,6 +80,13 @@ export const ViewProductsPage = () => {
         }
         <div className='row g-0 justify-content-center'>
           {
+            service.length === 0 ? (
+              <>
+              <div className='container justify-content-center align-items-center' style={{borderColor: 'red', height: 300, display: 'flex'}}>
+                <p className='fw-bold'  style={{color: '#a6a6a6'}} >No hay productos disponibles por el momento.</p>
+              </div>
+              </>
+            ) : 
             service.map(({ _id, name, description, amount }, i) => {
               return (
                 <ProductsCard
@@ -96,6 +104,7 @@ export const ViewProductsPage = () => {
           }
         </div>
       </div>
+    </div>
     </>
   )
 }

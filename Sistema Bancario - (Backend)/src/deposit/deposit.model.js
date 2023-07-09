@@ -32,6 +32,11 @@ const depositSchema = mongoose.Schema({
         required: true,
         default: Date()
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 },{
     versionKey: false
 });

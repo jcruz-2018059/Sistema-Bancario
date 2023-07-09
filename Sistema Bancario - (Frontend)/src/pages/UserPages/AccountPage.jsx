@@ -14,6 +14,12 @@ export const AccountPage = () => {
             Authorization: `${token}`
         }
     }
+    let rol;
+    if(role === 'ADMIN'){
+        rol = 'Administrador'
+    }else{
+        rol= 'Cliente'
+    }
 
     const getUsers = async () => {
         try {
@@ -31,7 +37,7 @@ export const AccountPage = () => {
     return (
         <>
             <>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop: 80 }}>
 
                     <div className="container">
                         <div className="row justify-content-center">
@@ -43,7 +49,7 @@ export const AccountPage = () => {
                                     <div className="card-body p-4 p-md-5">
                                         <div className="card-body">
                                             <h4 className='fw-bolder'>{user.name} {user.surname}</h4>
-                                            <h4 style={{ color: '#F3940C', fontSize: 25 }}>{role}</h4>
+                                            <h4 style={{ color: '#F3940C', fontSize: 25 }}>{rol}</h4>
                                             <br />
                                             <p className="mb-1" style={{ color: '#00043a' }}>
                                                 <strong>Nombre: </strong>
@@ -58,7 +64,7 @@ export const AccountPage = () => {
                                                 {user.username}
                                             </p>
                                             <p className="mb-1" style={{ color: '#00043a' }}>
-                                                <strong>AccountNumber: </strong>
+                                                <strong>No. de cuenta: </strong>
                                                 {user.accountNumber}
                                             </p>
                                             <p className="mb-1" style={{ color: '#00043a' }}>
@@ -70,11 +76,11 @@ export const AccountPage = () => {
                                                 {user.address}
                                             </p>
                                             <p className="mb-1" style={{ color: '#00043a' }}>
-                                                <strong>Telefono: </strong>
+                                                <strong>Teléfono: </strong>
                                                 {user.phone}
                                             </p>
                                             <p className="mb-1" style={{ color: '#00043a' }}>
-                                                <strong>email: </strong>
+                                                <strong>Correo: </strong>
                                                 {user.email}
                                             </p>
                                             <p className="mb-1" style={{ color: '#00043a' }}>
@@ -87,7 +93,7 @@ export const AccountPage = () => {
                                                 role != 'ADMIN' ? (
                                                 <div className="form-group col-md-6">
                                                     <Link to={`../account/update/${user._id}`}>
-                                                        <button className="btn text-light" type="submit" style={{ backgroundColor: '#00043a', borderRadius: 100 }}>EditarCuenta</button>
+                                                        <button className="btn text-light" type="submit" style={{ backgroundColor: '#00043a', borderRadius: 0 }}>Editar Cuenta</button>
                                                     </Link>
                                                 </div>
                                                 ) : <></>
@@ -96,14 +102,14 @@ export const AccountPage = () => {
                                                 role != 'ADMIN' ? (
                                                 <div className="form-group col-md-6">
                                                     <Link to='../movements/history'>
-                                                        <button className="btn text-light" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Ver Historial</button>
+                                                        <button className="btn text-light" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 0 }}>Ver Historial</button>
                                                     </Link>
                                                 </div>
                                                 ) : <></>
                                             }
                                             </div>
                                             <br />
-                                            <h3 className="mb-1" style={{ color: '#00043a' }}>Saldo:  Q{user.balance}</h3>
+                                            <h3 className="mb-1" style={{ color: '#00043a' }}>Saldo:  Q{user.balance}.00</h3>
                                         </div>
                                     </div>
                                 </div>

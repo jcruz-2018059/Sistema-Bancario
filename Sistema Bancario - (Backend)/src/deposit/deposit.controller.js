@@ -9,6 +9,7 @@ exports.test = (req,res)=>{
 exports.add = async(req,res)=>{
     try{
         let data = req.body;
+        let user = req.user.sub;
         let clientDestiny = await User.findOne({accountNumber: data.noAccountDestiny});
 
         if(!clientDestiny & data.DPI != clientDestiny.DPI) return res.status(404).send({message: 'Cliente no encontrado'});
@@ -19,7 +20,8 @@ exports.add = async(req,res)=>{
             amount: data.amount,
             description: data.description,
             date: new Date(Date.now()).getTime(),
-            exp: new Date(Date.now()).getTime() + 60
+            exp: new Date(Date.now()).getTime() + 60,
+            user: user
         };
         let deposit = new Deposit(params);
         await deposit.save();
@@ -27,7 +29,7 @@ exports.add = async(req,res)=>{
         clientDestiny.balance += parseFloat(data.amount)
         await clientDestiny.save();
 
-        return res.send({message: 'Deposit made correctly and balance user Updated'});
+        return res.send({message: '¡Depósito exitoso!'});
 
     }catch(err){
         console.error(err);
@@ -39,7 +41,7 @@ exports.add = async(req,res)=>{
 exports.getDeposit = async(req,res)=>{
     try{
         let user = req.user.sub;
-        let desposits = await Deposit.find({user});
+        let desposits = await Deposit.find({user: user});
         if(!desposits) return res.status(404).send({message: 'You have no deposit made'});
         return res.send({desposits});
     }catch(err){

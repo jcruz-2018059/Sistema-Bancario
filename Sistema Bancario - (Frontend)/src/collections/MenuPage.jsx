@@ -6,9 +6,9 @@ export const MenuPage = () => {
   const role = localStorage.getItem('role');
   return (
     <>
-      <div className=' vh-100'>
+      <div className=' vh-100 top-0 start-0' style={{height: '100vmax'}}>
         <div className='d-flex'>
-          <div className=" d-flex flex-column flex-shrink-0 p-3  " style={{ width: "280px", height: '100vh', backgroundColor: '#00032F' }}>
+          <div className=" d-flex flex-column flex-shrink-0 p-3  " style={{ width: "280px", height: 'vmax', backgroundColor: '#00032F' }}>
             <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
               <svg className="bi pe-none me-2" width="40" height="32"><use xlinkHref="#bootstrap" /></svg>
               <span className="fs-4">Menu</span>

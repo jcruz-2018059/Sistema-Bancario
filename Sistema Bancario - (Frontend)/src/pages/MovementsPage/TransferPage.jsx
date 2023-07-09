@@ -41,7 +41,7 @@ export const TransferPage = () => {
       }
   return (
     <>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop: 50}}>
 
                 <div className="container">
                     <div className="row justify-content-center">
@@ -51,7 +51,7 @@ export const TransferPage = () => {
                                     <div className="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i className="bi bi-envelope"></i></div>
                                     <h1 className="fw-bolder">Hacer Transferencia</h1>
                                 </div>
-                                <div className="card-body p-4 p-md-5">
+                                <div className="card-body p-4 p-md-5" style={{marginTop: -60}}>
                                     <div className="card-body">
                                         <form id="contactForm">
 
@@ -69,7 +69,7 @@ export const TransferPage = () => {
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="inputCorreo">Descripción</label>
-                                                <input type="text" id='description' className="form-control" placeholder="Description" style={{ borderColor: '#00043a', borderWidth: 4 }} />
+                                                <input type="text" id='description' className="form-control" placeholder="Descripción" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                             </div>
                                             <br />
                                             <div className="d-flex text-center align-items-center justify-content-center">

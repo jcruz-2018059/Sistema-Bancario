@@ -41,7 +41,7 @@ export const Nabvar = () => {
                         {
                             loggedIn == true ? (
                         <li className="nav-item">
-                            <Link onClick={() => logOut()} to='/login' className="nav-link px-4 rounded-0 border border-light">Cerrar Sesión</Link>
+                            <Link onClick={() => logOut()} to='/login' className="nav-link px-4 rounded-0">Cerrar Sesión</Link>
                         </li>
                          ) : <></>
                         }

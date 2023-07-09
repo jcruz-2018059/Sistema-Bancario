@@ -61,7 +61,7 @@ export const AccountUpdate = () => {
     useEffect(() => getUsers, []);
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop: 50}}>
 
                 <div className="container">
                     <div className="row justify-content-center">
@@ -69,9 +69,9 @@ export const AccountUpdate = () => {
                             <div className="card border border-white">
                                 <div className="text-center mb-3 pt-5">
                                     <div className="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i className="bi bi-envelope"></i></div>
-                                    <h1 className="fw-bolder">Editar Usuario</h1>
+                                    <h1 className="fw-bolder">Editar mis datos</h1>
                                 </div>
-                                <div className="card-body p-4 p-md-5">
+                                <div className="card-body p-4 p-md-5" style={{marginTop: -60}}>
                                     <div className="card-body">
                                         <form id="contactForm">
 
@@ -80,7 +80,7 @@ export const AccountUpdate = () => {
                                                 <input defaultValue={user.username} type="text" id='username' className="form-control" placeholder="Username" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="inputTelefono">Telefono</label>
+                                                <label htmlFor="inputTelefono">Teléfono</label>
                                                 <input defaultValue={user.phone} type="text" id='phone' className="form-control" placeholder="Telefono" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                             </div>
                                             <div className="form-group">
@@ -91,7 +91,7 @@ export const AccountUpdate = () => {
                                             <div className="d-flex text-center align-items-center justify-content-center">
                                                 <div className="form-group">
                                                     <Link to='/start/account'>
-                                                        <button onClick={() => updateUser()} className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Editar Cuenta</button>
+                                                        <button onClick={() => updateUser()} className="btn text-light rounded-0 m-3" type="submit" style={{ backgroundColor: '#F3940C', borderRadius: 100 }}>Actualizar Cuenta</button>
                                                     </Link>
                                                 </div>
                                                 <div className="form-group">

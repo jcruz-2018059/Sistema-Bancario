@@ -53,10 +53,11 @@ export const ViewDepositsPage = () => {
   useEffect(() => getDeposit, []);
   return (
     <>
-      <div className='container'>
-        <div className="container-fluid text-white text-center" style={{ marginTop: '10%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
+    <div className='vh-100'>
+    <div className='container'>
+        <div className="container-fluid text-white text-center" style={{ marginTop: '8%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
           <div className="container py-4">
-            <h1 className="mb-1">Ver depósitos</h1>
+            <h1 className="mb-1">Depósitos</h1>
             <p>Gestionar depositos</p>
           </div>
         </div>
@@ -64,9 +65,9 @@ export const ViewDepositsPage = () => {
 
         {
           role == 'ADMIN' ? (
-            <div className='mb-5 d-flex justify-content-between'>
+            <div className='mb-1 d-flex justify-content-between'>
               <Link to='add' className='ms-auto'>
-                <button className='btn btn-primary rounded-0'>Agregar Depositos</button>
+                <button className='btn btn-primary rounded-0'>Hacer Depósito</button>
               </Link>
             </div>
           ) : <></>
@@ -74,6 +75,13 @@ export const ViewDepositsPage = () => {
 
         <div className='row g-0 justify-content-center'>
         {
+          deposit.length === 0 ? (
+            <>
+            <div className='container justify-content-center align-items-center' style={{borderColor: 'red', height: 300, display: 'flex'}}>
+              <p className='fw-bold'  style={{color: '#a6a6a6'}} >No hay depósitos por el momento.</p>
+            </div>
+            </>
+          ) : 
                         deposit.map(({ _id, clientDestiny: {name: destinyName} = {}, clientDestiny: {surname: destinySurname} = {}, noAccountDestiny, amount, description, date, exp}, i) => {
                             return (
                                 <DepositsCard
@@ -94,6 +102,7 @@ export const ViewDepositsPage = () => {
                     }
         </div>
       </div>
+    </div>
     </>
   )
 }

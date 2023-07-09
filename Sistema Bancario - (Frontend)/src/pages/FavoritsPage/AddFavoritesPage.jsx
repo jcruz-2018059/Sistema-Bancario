@@ -39,7 +39,7 @@ export const AddFavoritesPage = () => {
   }
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop: 40}}>
 
         <div className="container">
           <div className="row justify-content-center">
@@ -47,15 +47,15 @@ export const AddFavoritesPage = () => {
               <div className="card border border-white">
                 <div className="text-center mb-3 pt-5">
                   <div className="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i className="bi bi-envelope"></i></div>
-                  <h1 className="fw-bolder">Agregar Favoritos</h1>
+                  <h1 className="fw-bolder">Agregar Favorito</h1>
                 </div>
-                <div className="card-body p-4 p-md-5">
+                <div className="card-body p-4 p-md-5" style={{marginTop: -60}}>
                   <div className="card-body">
                     <form id="contactForm">
 
                       <div className="form-group">
-                        <label htmlFor="inputUsername">Nombre</label>
-                        <input  type="text" id='alias' className="form-control" placeholder="Nombre" style={{ borderColor: '#00043a', borderWidth: 4 }} />
+                        <label htmlFor="inputUsername">Alias</label>
+                        <input  type="text" id='alias' className="form-control" placeholder="Alias del favorito" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                       </div>
                       <div className="form-group">
                         <label htmlFor="inputTelefono">Numero de Cuenta</label>
