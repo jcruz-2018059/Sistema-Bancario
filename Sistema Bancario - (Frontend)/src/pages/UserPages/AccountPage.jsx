@@ -111,7 +111,7 @@ export const AccountPage = () => {
                     <br />
                     <h3 className="mb-3" style={{ color: '#00043a' }}>Saldo:  Q{user.balance}.00</h3>
                     {convertedBalance && (
-                      <p className="mb-1 " style={{ color: '#00043a' }}>
+                      <p className="mb-1 " style={{ color: '#00043a', fontSize: '19px' }}>
                         Saldo convertido: {selectedCurrency} {convertedBalance}
                       </p>
                     )}

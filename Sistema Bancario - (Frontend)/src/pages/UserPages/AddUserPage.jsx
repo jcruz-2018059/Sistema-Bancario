@@ -27,7 +27,6 @@ export const AddUserPage = () => {
                 password: document.getElementById('password').value,
                 workName: document.getElementById('workName').value,
                 monthlyIncome: document.getElementById('monthlyIncome').value,
-                balance: document.getElementById('balance').value,
                 role: 'CLIENT'
             }
             const { data } = await axios.post('http://localhost:3200/user/add', user, config);
@@ -40,7 +39,7 @@ export const AddUserPage = () => {
         } catch (err) {
             console.log(err)
             Swal.fire({
-                title: err.response.data.message|| err.response.data.validate || err.response.data.errors[0].msg|| `Error añadiendo Usuario :(`,
+                title: err.response.data.message || err.response.data.validate || err.response.data.errors[0].msg || `Error añadiendo Usuario :(`,
                 icon: 'error',
                 timer: 4000
             })
@@ -48,7 +47,7 @@ export const AddUserPage = () => {
     }
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 30}}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 30 }}>
                 <div className="container px-5 ">
 
                     <div className="bg-light rounded-4 py-5 px-4 px-md-5">
@@ -94,15 +93,9 @@ export const AddUserPage = () => {
                                             <input type="email" className="form-control" placeholder="Correo" id="email" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="form-group col-md-6">
-                                            <label htmlFor="inputIngresosM">Ingresos Mensuales</label>
-                                            <input type="text" className="form-control" placeholder="Ingresos Mensuales" id="monthlyIncome" style={{ borderColor: '#00043a', borderWidth: 4 }} />
-                                        </div>
-                                        <div className="form-group col-md-6">
-                                            <label htmlFor="inputIngresosA">Ingresos de Apertura</label>
-                                            <input type="number" className="form-control" placeholder="Ingresos de Apertura" id="balance" style={{ borderColor: '#00043a', borderWidth: 4 }} />
-                                        </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputIngresosM">Ingresos Mensuales</label>
+                                        <input type="text" className="form-control" placeholder="Ingresos Mensuales" id="monthlyIncome" style={{ borderColor: '#00043a', borderWidth: 4 }} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputPassword">Nombre del Lugar de Empleo</label>
@@ -115,12 +108,12 @@ export const AddUserPage = () => {
                                     <div className="d-flex text-center align-items-center justify-content-center">
                                         <div className="form-group">
                                             <Link >
-                                                <button onClick={(e) => { addUser(), e.preventDefault() }} className="btn text-light rounded-0 m-3" style={{backgroundColor: '#F3940C', borderRadius: 100}} type="submit">Agregar Usuario</button>
+                                                <button onClick={(e) => { addUser(), e.preventDefault() }} className="btn text-light rounded-0 m-3" style={{ backgroundColor: '#F3940C', borderRadius: 100 }} type="submit">Agregar Usuario</button>
                                             </Link>
                                         </div>
                                         <div className="form-group">
                                             <Link to="/start/users">
-                                                <button className="btn text-light rounded-0 m-3" style={{backgroundColor: '#00043a', borderRadius: 100}} type="submit">Cancelar</button>
+                                                <button className="btn text-light rounded-0 m-3" style={{ backgroundColor: '#00043a', borderRadius: 100 }} type="submit">Cancelar</button>
                                             </Link>
                                         </div>
                                     </div>

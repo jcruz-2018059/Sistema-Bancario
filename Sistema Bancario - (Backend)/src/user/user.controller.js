@@ -1,40 +1,71 @@
 const User = require('./user.model');
 const { encrypt, validateData, checkPassword, generateAccountNumber } = require('../../utils/validate');
 const { createToken } = require('../../services/jwt');
+const Deposit = require('../deposit/deposit.model')
+const Movement = require('../movement/movement.model')
+const Favorites = require('../favorites/favorites.model')
 
 exports.test = (req, res)=>{
     return res.send({message: 'Test function is running :)'});
 };
 
-exports.default = async()=>{
-    try{
-        let defAdmin = {
-            name: 'General',
-            surname: 'Administrator',
-            username: 'ADMINB',
-            DPI: 1265487426514,
-            address: 'Guatemala',
-            phone: '+502 5897 2145',
-            email: 'ADMINB@bank.system.org',
-            password: 'ADMINB',
-            workName: 'Sistema Bancario S.A',
-            monthlyIncome: 0,
-            balance: 0,
-            role: 'ADMIN'
-        };
-        let existAdministrator = await User.findOne({username: 'ADMINB'});
-        if(existAdministrator){
-            return console.log('Default admin is already created.');
-        }
+exports.default = async () => {
+    try {
+      let defAdmin = {
+        name: 'General',
+        surname: 'Administrator',
+        username: 'ADMINB',
+        DPI: 1265487426514,
+        address: 'Guatemala',
+        phone: '+502 5897 2145',
+        email: 'ADMINB@bank.system.org',
+        password: 'ADMINB',
+        workName: 'Sistema Bancario S.A',
+        monthlyIncome: 0,
+        balance: 0,
+        role: 'ADMIN'
+      };
+  
+      let defUser = {
+        name: 'Default',
+        surname: 'User',
+        username: 'default',
+        DPI: 1234567890123,
+        address: 'Guatemala',
+        phone: '+502 1234 5678',
+        email: 'default@bank.system.org',
+        password: 'default',
+        workName: 'DEFAULT',
+        monthlyIncome: 0,
+        balance: 0,
+        role: 'ADMIN'
+      };
+  
+      let existAdministrator = await User.findOne({ username: 'ADMINB' });
+      if (existAdministrator) {
+        console.log('Default admin is already created.');
+      } else {
         defAdmin.accountNumber = await generateAccountNumber();
         defAdmin.password = await encrypt(defAdmin.password);
         let createDefaultAdmin = new User(defAdmin);
         await createDefaultAdmin.save();
-        return console.log('Default administrator created.');
-    }catch(err){
-        console.error(err);
+        console.log('Default administrator created.');
+      }
+  
+      let existDefaultUser = await User.findOne({ username: 'default' });
+      if (existDefaultUser) {
+        console.log('Default user is already created.');
+      } else {
+        defUser.accountNumber = await generateAccountNumber();
+        defUser.password = await encrypt(defUser.password);
+        let createDefaultUser = new User(defUser);
+        await createDefaultUser.save();
+        console.log('Default user created.');
+      }
+    } catch (err) {
+      console.error(err);
     }
-};
+  };
 
 exports.login = async(req, res)=>{
     try{
@@ -91,7 +122,7 @@ exports.add = async(req, res)=>{
             password: data.password,
             workName: data.workName,
             monthlyIncome: data.monthlyIncome,
-            balance: data.balance,
+            balance: 0,
             role: data.role
         };
         let validate = validateData(params);
@@ -123,16 +154,16 @@ exports.add = async(req, res)=>{
 
 exports.get = async (req, res) => {
     try {
-        let users = await User.find();
-        const adminUsers = users.filter(user => user.role === 'ADMIN');
-        const otherUsers = users.filter(user => user.role !== 'ADMIN');
-        const sortedUsers = adminUsers.concat(otherUsers);
-        return res.send({ message: 'Users found:', users: sortedUsers });
+      let users = await User.find({ name: { $ne: 'Default' } });
+      const adminUsers = users.filter(user => user.role === 'ADMIN');
+      const otherUsers = users.filter(user => user.role !== 'ADMIN');
+      const sortedUsers = adminUsers.concat(otherUsers);
+      return res.send({ message: 'Users found:', users: sortedUsers });
     } catch (err) {
-        console.error(err);
-        return res.status(500).send({ message: 'Error getting users.' });
+      console.error(err);
+      return res.status(500).send({ message: 'Error getting users.' });
     }
-};
+  };
 
 exports.getByMovements = async(req, res)=>{
     try{
@@ -208,6 +239,21 @@ exports.delete = async(req, res)=>{
         if(!deletedUser){
             return res.status(404).send({message:'User not found and not deleted.'});
         }
+        let existUserDeposit = await Deposit.findOne({clientDestiny: userId});
+        if(existUserDeposit){
+        await Deposit.updateMany({ clientDestiny: deletedUser._id}, { clientDestiny: '64ac86a3e771647a14bd0be9' });
+        }
+
+        let existUserTransfer = await Movement.findOne({userDestination: userId});
+        if(existUserTransfer){
+        await Movement.updateMany({ userDestination: deletedUser._id}, { userDestination: '64ac86a3e771647a14bd0be9' });
+        }
+
+        let existUserFavorites = await Favorites.findOne({client: userId});
+        if(existUserFavorites){
+        await Favorites.updateMany({ client: deletedUser._id}, { client: '64ac86a3e771647a14bd0be9' });
+        }
+
         return res.send({message: 'Cuenta eliminada satisfactoriamente.', deletedUser});
     }catch(err){
         console.error(err);

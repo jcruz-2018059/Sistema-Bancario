@@ -59,7 +59,6 @@ const userScheme = mongoose.Schema({
     },
     balance:{
         type: Number,
-        required: true
     },
     dailyTransfer:{
         type: Number,

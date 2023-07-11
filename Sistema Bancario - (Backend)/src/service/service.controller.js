@@ -2,6 +2,7 @@
 
 
 const Service = require('./service.model');
+const Movements = require('../movement/movement.model');
 
 exports.test = (req,res)=>{
     return res.send({message: 'Test function is running'});
@@ -38,6 +39,11 @@ exports.deleteService = async(req,res)=>{
 
         let serviceDeleted = await Service.findOneAndRemove({_id: service});
         if(!serviceDeleted) return res.send({message: 'Servece not Deleted'});
+
+        let existMovementsUser = await Movements.findOne({userDestination: userId});
+        if(existMovementsUser){
+        await Movements.updateMany({ userDestination: deletedUser._id}, { userDestination: '64ac86a3e771647a14bd0be9' });
+        }
 
         return res.send({message: 'Service deleted Successfully', serviceDeleted});
 
