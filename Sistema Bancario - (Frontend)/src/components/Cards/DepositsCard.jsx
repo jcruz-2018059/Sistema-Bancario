@@ -16,12 +16,20 @@ export const DepositsCard = ({ id, name, surname, cuenta, amount, description, d
           <h5 className="card-title mb-0">Depósito</h5>
         </div>
         <div className="card-body">
-          <p className="mb-1">
-            <strong>Destinatario:</strong> {name} {surname}
-          </p>
-          <p className="mb-1">
-            <strong>No cuenta:</strong> {cuenta}
-          </p>
+          {
+            name ? (
+              <p className="mb-1">
+                <strong>Destinatario:</strong> {name} {surname}
+              </p>
+            ) : <></>
+          }
+          {
+            cuenta ? (
+              <p className="mb-1">
+                <strong>No cuenta:</strong> {cuenta}
+              </p>
+            ) : <></>
+          }
           <p className="mb-1">
             <strong>Monto:</strong> Q{amount}.00
           </p>

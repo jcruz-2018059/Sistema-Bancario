@@ -91,7 +91,7 @@ export const MenuPage = () => {
             <hr />
           </div>
 
-          <div className='w-100' style={{ backgroundColor: '#F2F2F2 ' }}>
+          <div className='w-100' style={{ backgroundColor: '#F2F2F2 ', height: 'vmax' }}>
             <Nabvar></Nabvar>
             <Outlet></Outlet>
           </div>

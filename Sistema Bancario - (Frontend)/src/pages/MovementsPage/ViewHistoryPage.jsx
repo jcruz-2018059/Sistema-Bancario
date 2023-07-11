@@ -1,11 +1,13 @@
 import { MovementsCard } from '../../components/Cards/MovementsCard'
+import { DepositsCard } from '../../components/Cards/DepositsCard'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export const ViewHistoryPage = () => {
     const token = localStorage.getItem('token');
-    const [movements, setMovements] = useState([{}])
+    const [movements, setMovements] = useState([{}]);
+    const [deposits, setDeposits] = useState([{}]);
     const config = {
         headers: {
         Authorization: `${token}`
@@ -22,7 +24,19 @@ export const ViewHistoryPage = () => {
             throw new Error('Error getting movements');
         }
     }
+    const getDeposits = async () => {
+        try {
+            const { data } = await axios(`http://localhost:3200/deposit/get`, config);
+            if (data){
+                setDeposits(data.deposits);
+            }
+        } catch (err) {
+            console.log(err);
+            throw new Error('Error getting deposits');
+        }
+    }
     useEffect(()=> {getMovements()}, []);
+    useEffect(()=> {getDeposits()}, []);
     return (
         <>
         <div className='vh-100'>
@@ -30,7 +44,7 @@ export const ViewHistoryPage = () => {
                 <div className="container-fluid text-white text-center" style={{ marginTop: '8%', marginBottom: '20px', backgroundImage: 'linear-gradient(0.25turn, #007bff, #00043a)' }}>
                     <div className="container py-4">
                         <h1 className="mb-1">Historial de la cuenta</h1>
-                        <p>Historial de movimientos</p>
+                        <p>Historial de movimientos y depósitos</p>
                     </div>
                 </div>
 
@@ -41,6 +55,9 @@ export const ViewHistoryPage = () => {
                 </div>
 
                 <div className='row g-0 justify-content-center'>
+                <div className="container justify-content-center align-items-center" style={{display: 'flex'}}>
+                        <h2 className="fw-bold">Movimientos</h2>
+                 </div>
                 {
                     movements.length === 0 ? (
                         <>
@@ -64,6 +81,32 @@ export const ViewHistoryPage = () => {
                                     service={serviceName}
                                     date={date}
                                 ></MovementsCard>
+                            )
+                        })
+                    }
+                    <hr style={{marginTop: 20}}></hr>
+                    <div className="container justify-content-center align-items-center" style={{display: 'flex'}}>
+                        <h2 className="fw-bold">Depósitos</h2>
+                    </div>
+                    {
+                    deposits.length === 0 ? (
+                        <>
+                        <div className='container justify-content-center align-items-center' style={{borderColor: 'red', height: 300, display: 'flex'}}>
+                          <p className='fw-bold'  style={{color: '#a6a6a6'}} >Aún no tienes depósitos.</p>
+                        </div>
+                        </>
+                      ) : 
+                        deposits.map(({ _id, amount, description, date, exp}, i) => {
+                            return (
+                                <DepositsCard
+                                    key={i}
+                                    id={_id}
+                                    amount={amount}
+                                    description={description}
+                                    date={date}
+                                    expirationDate={exp}
+                                    >
+                                </DepositsCard>
                             )
                         })
                     }
