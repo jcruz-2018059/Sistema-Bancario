@@ -47,7 +47,7 @@ export const AddAdminPage = () => {
     }
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 50 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 100, marginBottom: 200 }}>
                 <div className="container px-5">
 
                     <div className="bg-light rounded-4 py-5 px-4 px-md-5">

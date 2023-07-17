@@ -11,7 +11,7 @@ api.get('/', movementController.test);
 //Funciones de Client
 api.post('/buy/:service', [ensureAuth, isClient], movementController.buy);
 api.post('/transfer', [ensureAuth, isClient], movementController.transfer);
-api.get('/get', [ensureAuth, isClient], movementController.get);
+api.get('/get', [ensureAuth], movementController.get);
 
 //Funciones de Admin
 api.get('/get/:id', [ensureAuth, isAdmin], movementController.getLast5);

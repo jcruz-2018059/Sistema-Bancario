@@ -45,7 +45,6 @@ export const AccountPage = () => {
       setConvertedBalance(convertedAmount);
     } catch (error) {
       console.log(error);
-      // Manejar el error al obtener el tipo de cambio
     }
   };
 
@@ -57,9 +56,16 @@ export const AccountPage = () => {
     setSelectedCurrency(e.target.value);
   };
 
+  const formatBalance = (balance) => {
+    if (typeof balance === 'number') {
+      return balance.toLocaleString('en-US', { useGrouping: true });
+    }
+    return balance;
+  };
+
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop: 80 }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop: 20 }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-6 col-lg-7 col-md-9">
@@ -109,7 +115,7 @@ export const AccountPage = () => {
                       {user.workName}
                     </p>
                     <br />
-                    <h3 className="mb-3" style={{ color: '#00043a' }}>Saldo:  Q{user.balance}.00</h3>
+                    <h3 className="mb-3" style={{ color: '#00043a' }}>Saldo:  Q{formatBalance(user.balance)}.00</h3>
                     {convertedBalance && (
                       <p className="mb-1 " style={{ color: '#00043a', fontSize: '19px' }}>
                         Saldo convertido: {selectedCurrency} {convertedBalance}

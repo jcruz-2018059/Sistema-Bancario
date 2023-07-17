@@ -1,4 +1,4 @@
-export const Users = ({ name, surname, DPI, phone, email, balance, role, movements, accountNumber, number }) => {
+export const Users = ({ name, surname, DPI, phone, email, balance, role, movements, accountNumber, number}) => {
   const roleClass = role === 'ADMIN' ? 'badge text-bg-success' : 'badge text-bg-primary';
 
   return (
@@ -15,6 +15,7 @@ export const Users = ({ name, surname, DPI, phone, email, balance, role, movemen
         <td>{name}</td>
         <td>{surname}</td>
         <td>{DPI}</td>
+        <td>{accountNumber}</td>
         <td>{phone}</td>
         <td>{email}</td>
         <td>Q{balance}.00</td>

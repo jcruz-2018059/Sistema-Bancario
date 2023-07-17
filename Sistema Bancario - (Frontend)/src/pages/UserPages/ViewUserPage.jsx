@@ -84,6 +84,7 @@ export const ViewUserPage = () => {
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">DPI</th>
+                            <th scope="col">No. Cuenta</th>
                             <th scope="col">No. Teléfono</th>
                             <th scope="col">Correo</th>
                             <th scope="col">Saldo</th>
@@ -93,7 +94,7 @@ export const ViewUserPage = () => {
                     </thead>
                     <tbody>
                         {
-                            user.map(({ _id, name, surname, DPI, phone, email, balance, role }, index) => {
+                            user.map(({ _id, name, surname, DPI, phone, email, balance, role, accountNumber }, index) => {
                                 return (
                                     <tr className="text-dark" key={index}>
                                         <Users
@@ -105,7 +106,7 @@ export const ViewUserPage = () => {
                                             email={email}
                                             balance={balance}
                                             role={role}
-
+                                            accountNumber={accountNumber}
                                         ></Users>
 
                                         <td>
