@@ -32,6 +32,7 @@ import { TransferPage } from './pages/MovementsPage/TransferPage';
 import { AddAdminPage } from './pages/UserPages/AddAdminPage';
 import { BuyProductPage } from './pages/ProductsPage/BuyProductPage';
 import { TransferFavorite } from './pages/MovementsPage/TransferFavorite';
+import { UpdateDeposits } from './pages/DepositsPage/UpdateDeposits';
 
 
 
@@ -130,6 +131,10 @@ export const Index = () => {
                                         {
                                             path: 'add',
                                             element: <AddDepositsPage></AddDepositsPage>
+                                        },
+                                        {
+                                            path: 'update/:id',
+                                            element: <UpdateDeposits></UpdateDeposits>
                                         }
                                     ]
                                 },

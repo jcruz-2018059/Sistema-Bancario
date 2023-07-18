@@ -76,65 +76,45 @@ exports.add = async (req, res) => {
     }
   };
   
-  exports.updateDeposit = async (req, res) => {
-    try {
-      // Obtiene los datos del cuerpo de la solicitud
-      let data = req.body;
-      
-      // Obtiene el ID del depósito de los parámetros de la solicitud
-      let depositID = req.params.id;
-      
-      // Busca el depósito en la base de datos según el ID proporcionado
-      let deposit = await Deposit.findOne({ _id: depositID });
-      
-      // Busca el cliente en la base de datos según el ID del cliente destino en el depósito
-      let client = await User.findOne({ _id: deposit.clientDestiny });
-      
-      // Verifica si no se encuentra el depósito
-      if (!deposit) {
-        return res.status(404).send({ message: 'Deposit not found' });
-      }
-      
-      // Crea un objeto de parámetros actualizados para el depósito
-      let params = {
-        amount: data.amount
-      };
-      
-      // Calcula el nuevo saldo del cliente
-      let newBalance = client.balance - params.amount;
-      
-      // Actualiza el depósito en la base de datos
-      let depositUpdated = await Deposit.findOneAndUpdate(
-        { _id: deposit },
-        params,
-        { new: true }
-      );
-      
-      // Verifica si no se encuentra el depósito actualizado
-      if (!depositUpdated) {
-        return res.status(404).send({ message: 'Deposit not updated' });
-      }
-      
-      // Actualiza el saldo del cliente en la base de datos
-      let clientUpdated = await User.findOneAndUpdate(
-        { id: client },
-        newBalance,
-        { new: true }
-      );
-      
-      // Verifica si no se encuentra el cliente actualizado
-      if (!clientUpdated) {
-        return res.status(404).send({ message: 'Client not updated' });
-      }
-      
-      // Devuelve una respuesta exitosa con un mensaje y el depósito actualizado
-      return res.send({ message: 'Deposit Updated successfully', depositUpdated });
-    } catch (err) {
-      // Si ocurre un error, muestra el mensaje de error en la consola y devuelve una respuesta de error
-      console.error(err);
-      return res.status(500).send({ message: 'Error updating Deposit' });
+exports.updateDeposit = async (req, res) => {
+  try {
+    // Obtiene los datos del cuerpo de la solicitud
+    let data = req.body;
+
+    // Obtiene el ID del depósito de los parámetros de la solicitud
+    let depositID = req.params.id;
+
+    // Busca el depósito en la base de datos según el ID proporcionado
+    let deposit = await Deposit.findOne({ _id: depositID });
+
+    // Verifica si no se encuentra el depósito
+    if (!deposit) {
+      return res.status(404).send({ message: 'Deposit not found' });
     }
-  };
+
+    // Actualiza el saldo del cliente en la base de datos
+    let client = await User.findOne({ _id: deposit.clientDestiny });
+    if (!client) {
+      return res.status(404).send({ message: 'Client not found' });
+    }
+    client.balance = client.balance - deposit.amount;
+    await client.save();
+    
+    // Actualiza el campo "amount" del depósito
+    deposit.amount = data.amount;
+    await deposit.save();
+
+    client.balance = client.balance + data.amount;
+    await client.save();
+
+    // Devuelve una respuesta exitosa con un mensaje y el depósito actualizado
+    return res.send({ message: 'Deposit updated successfully', deposit });
+  } catch (err) {
+    // Si ocurre un error, muestra el mensaje de error en la consola y devuelve una respuesta de error
+    console.error(err);
+    return res.status(500).send({ message: `Error updating Deposit: ${err.message}` });
+  }
+};
 
 
   exports.reverseDeposit = async (req, res) => {
@@ -211,3 +191,15 @@ exports.add = async (req, res) => {
       return res.status(500).send({ message: 'Error getting deposits' });
     }
   };
+
+  exports.getDeposit = async(req, res)=>{
+    try{
+      let depositID = req.params.id;
+      let deposit = await Deposit.findOne({_id: depositID});
+      if(!deposit) return res.status(404).send({message: 'Deposit not found'});
+      return res.send({deposit})
+    }catch(err){
+      console.error(err);
+      return res.status(500).send({ message: 'Error getting deposit' });
+    }
+  }

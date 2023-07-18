@@ -39,7 +39,9 @@ export const DepositsCard = ({ id, name, surname, cuenta, amount, description, d
           <p className="mb-1">
             <strong>Fecha:</strong> {new Date(date).toLocaleDateString()}
           </p>
-
+          <Link to={`update/${id}`} className='btn btn-primary rounded-0' style={{marginTop: '10px'}}>
+             Editar
+             </Link>
           {shouldShowRevertButton && (
             <Link onClick={onClick} className="btn btn-warning m-2 rounded-0">
               Revertir
